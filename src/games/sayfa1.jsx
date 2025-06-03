@@ -27,9 +27,13 @@ function Sayfa1() {
   );
 
   const winner = calculateWinner(squares);
+  const isDraw = !winner && squares.every(Boolean); // Beraberlik kontrolü
+
   const status = winner
     ? `Kazanan: ${winner}`
-    : `Sıradaki: ${xIsNext ? 'X' : 'O'}`;
+    : isDraw
+      ? 'Berabere'
+      : `Sıradaki: ${xIsNext ? 'X' : 'O'}`;
 
   return (
     <div className="sayfa1-container">

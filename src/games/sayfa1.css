@@ -1,48 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
 .sayfa1-container {
-  padding: 20px;
-  max-width: 400px;
-  margin: 40px auto;
-  background: #f0f8ff;
+  padding: 30px;
+  max-width: 420px;
+  width: 90%;
+  background: #ffffff;
   text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: sans-serif;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.sayfa1-container:hover {
+  transform: scale(1.02);
+}
+
+h1 {
+  font-size: 2rem;
+  color: #007acc;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .board-row {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .square {
-  width: 80px;
-  height: 80px;
-  background-color: white;
-  border: 2px solid #444;
-  font-size: 32px;
+  width: 90px;
+  height: 90px;
+  background-color: #f9f9f9;
+  border: 2px solid #007acc;
+  font-size: 36px;
   font-weight: bold;
   cursor: pointer;
-  margin: 4px;
-  border-radius: 6px;
-  transition: background-color 0.2s;
+  margin: 6px;
+  border-radius: 10px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  color: #333;
 }
 
 .square:hover {
-  background-color: #eee;
+  background-color: #e6f2ff;
+  transform: scale(1.05);
 }
 
 .sayfa1-button {
-  margin-top: 20px;
-  padding: 10px 16px;
-  background-color: #007acc;
+  margin-top: 25px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #007acc, #005fa3);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .sayfa1-button:hover {
-  background-color: #005fa3;
+  background: linear-gradient(135deg, #005fa3, #003f7f);
+  transform: scale(1.05);
 }
 
 .back-link {
@@ -51,4 +92,57 @@
   text-decoration: none;
   color: #007acc;
   font-weight: bold;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #005fa3;
+  text-decoration: underline;
+}
+
+/* 🌙 Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1e1e2f, #2c3e50);
+  }
+
+  .sayfa1-container {
+    background: #1f1f2f;
+    color: #eee;
+  }
+
+  h1 {
+    color: #4faaff;
+  }
+
+  p {
+    color: #ccc;
+  }
+
+  .square {
+    background-color: #2c2c3d;
+    color: #f0f0f0;
+    border: 2px solid #4faaff;
+  }
+
+  .square:hover {
+    background-color: #3a3a4f;
+  }
+
+  .sayfa1-button {
+    background: linear-gradient(135deg, #4faaff, #2b7dbf);
+  }
+
+  .sayfa1-button:hover {
+    background: linear-gradient(135deg, #2b7dbf, #1a5f9f);
+  }
+
+  .back-link {
+    color: #4faaff;
+  }
+
+  .back-link:hover {
+    color: #2b7dbf;
+  }
 }
