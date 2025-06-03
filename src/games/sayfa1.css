@@ -1,0 +1,54 @@
+.sayfa1-container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 40px auto;
+  background: #f0f8ff;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+
+.board-row {
+  display: flex;
+  justify-content: center;
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  border: 2px solid #444;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 4px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.square:hover {
+  background-color: #eee;
+}
+
+.sayfa1-button {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sayfa1-button:hover {
+  background-color: #005fa3;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #007acc;
+  font-weight: bold;
+}

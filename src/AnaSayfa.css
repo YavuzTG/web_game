@@ -1,0 +1,47 @@
+/* AnaSayfa.css */
+.ana-sayfa {
+  background: #0d0d0d;
+  color: #fff;
+  min-height: 100vh;
+  text-align: center;
+  padding: 60px 20px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.baslik {
+  font-size: 40px;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  margin-bottom: 10px;
+}
+
+.aciklama {
+  color: #ccc;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.kutular {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.neon-buton {
+  background: none;
+  border: 2px solid #ff00cc;
+  color: #ff00cc;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc;
+  transition: all 0.3s ease-in-out;
+}
+
+.neon-buton:hover {
+  background: #ff00cc;
+  color: #fff;
+  box-shadow: 0 0 20px #ff00cc, 0 0 40px #ff00cc;
+}

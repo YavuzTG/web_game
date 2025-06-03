@@ -1,0 +1,154 @@
+.sayfa2-container {
+  text-align: center;
+  color: #00ffea;
+  padding: 30px;
+  background-color: #0b0b0b;
+  min-height: 100vh;
+}
+
+.kelime {
+  font-size: 2rem;
+  letter-spacing: 10px;
+  margin: 20px 0;
+  display: inline-block;
+}
+
+.harfler {
+  margin-top: 20px;
+}
+
+.harf {
+  background-color: #00ffea;
+  color: #000;
+  border: none;
+  margin: 5px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.harf:disabled {
+  background-color: #555;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.kazandın {
+  color: lime;
+  font-size: 1.5rem;
+}
+
+.kaybettin {
+  color: red;
+  font-size: 1.5rem;
+}
+.yeniden-baslat {
+  background-color: #ff00ff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  margin-top: 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 10px #ff00ff;
+}
+
+.yeniden-baslat:hover {
+  background-color: #e600e6;
+  box-shadow: 0 0 15px #ff33ff;
+}
+.asmaca-container {
+  margin: 30px auto;
+  width: 200px;
+  height: 250px;
+  position: relative;
+}
+
+.cizgi {
+  position: absolute;
+  background-color: #00ffea;
+}
+
+.g-ver {
+  width: 100px;
+  height: 5px;
+  top: 0;
+  left: 50px;
+}
+
+.g-dik {
+  width: 5px;
+  height: 200px;
+  top: 0;
+  left: 50px;
+}
+
+.g-ip {
+  width: 2px;
+  height: 30px;
+  top: 0;
+  left: 145px;
+}
+
+/* Çöp adam parçaları */
+.kafa {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid #00ffea;
+  position: absolute;
+  top: 30px;
+  left: 130px;
+}
+
+.govde {
+  width: 3px;
+  height: 50px;
+  background-color: #00ffea;
+  position: absolute;
+  top: 60px;
+  left: 144px;
+}
+
+.kol-sol,
+.kol-sag {
+  width: 3px;
+  height: 30px;
+  background-color: #00ffea;
+  position: absolute;
+  top: 65px;
+}
+
+.kol-sol {
+  transform: rotate(-45deg);
+  left: 125px;
+}
+
+.kol-sag {
+  transform: rotate(45deg);
+  left: 162px;
+}
+
+.bacak-sol,
+.bacak-sag {
+  width: 3px;
+  height: 35px;
+  background-color: #00ffea;
+  position: absolute;
+  top: 110px;
+}
+
+.bacak-sol {
+  transform: rotate(30deg);
+  left: 128px;
+}
+
+.bacak-sag {
+  transform: rotate(-30deg);
+  left: 160px;
+}
+
