@@ -1,20 +1,29 @@
 .memory-container {
-  text-align: center;
   padding: 20px;
-  font-family: 'Segoe UI', sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
 }
 
 .memory-grid {
   display: grid;
-  grid-template-columns: repeat(6, 100px);
-  gap: 15px;
-  justify-content: center;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 10px;
+  justify-items: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .memory-card {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   perspective: 1000px;
   cursor: pointer;
   position: relative;
@@ -33,49 +42,44 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  border-radius: 12px;
+  border-radius: 8px;
   backface-visibility: hidden;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
-/* 🎨 Galatasaray renkli kart arkası */
 .memory-card .front {
-  background: linear-gradient(to right, #FDB913 50%, #A32638 50%);
+  background: linear-gradient(to right, #ffcc00 50%, #c8102e 50%);
   transform: rotateY(0deg);
-  border: 2px solid #444;
 }
 
-/* Kartın ön yüzü (görsel) */
 .memory-card .back {
+  background-color: #fff;
   transform: rotateY(180deg);
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: white;
-  border: 2px solid #444;
+  align-items: center;
 }
 
-.memory-card img {
-  width: 90%;
-  height: 90%;
+.memory-card .back img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .memory-button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #A32638;
+  background-color: #007acc;
   color: white;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .memory-button:hover {
-  background-color: #891b2c;
+  background-color: #005fa3;
 }
 
 .back-link {
@@ -94,4 +98,21 @@
 .back-link:hover {
   background-color: #007acc;
   color: white;
+}
+
+/* ✅ Mobil uyumlu hale getir */
+@media (max-width: 600px) {
+  .memory-card {
+    width: 60px;
+    height: 60px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .memory-button, .back-link {
+    width: 80%;
+    font-size: 14px;
+  }
 }
