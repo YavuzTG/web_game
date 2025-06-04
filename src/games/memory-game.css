@@ -14,16 +14,18 @@ h1 {
 
 .memory-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* minmax küçültüldü */
   gap: 10px;
-  justify-items: center;
-  max-width: 600px;
+  justify-content: center; /* justify-items yerine */
+  max-width: 100%; /* % olarak esnetildi */
   margin: 0 auto;
+  padding: 0 10px; /* kenarlardan biraz boşluk */
+  box-sizing: border-box;
 }
 
 .memory-card {
-  width: 80px;
-  height: 80px;
+  width: 60px; /* küçültüldü */
+  height: 60px;
   perspective: 1000px;
   cursor: pointer;
   position: relative;
@@ -100,11 +102,11 @@ h1 {
   color: white;
 }
 
-/* ✅ Mobil uyumlu hale getir */
+/* Mobil uyumlu düzenlemeler */
 @media (max-width: 600px) {
   .memory-card {
-    width: 60px;
-    height: 60px;
+    width: 50px;  /* biraz daha küçült */
+    height: 50px;
   }
 
   h1 {
@@ -114,5 +116,10 @@ h1 {
   .memory-button, .back-link {
     width: 80%;
     font-size: 14px;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* mobilde daha küçük sütunlar */
+    padding: 0 5px;
   }
 }
