@@ -3,11 +3,13 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './games/tic-tac-toe.css';
 import './games/hangman.css';
-import './games/memory-game.css'; // ✅ yeni css eklendi
+import './games/memory-game.css';
+import './games/f1-wordle.css'; // ✅ yeni css eklendi
 
 import Tic_tac_toe from './games/tic-tac-toe';
 import Hangman from './games/hangman';
-import MemoryGame from './games/memory-game'; // ✅ yeni oyun bileşeni
+import MemoryGame from './games/memory-game';
+import F1Wordle from './games/f1-wordle'; // ✅ yeni oyun bileşeni
 
 function AnaSayfa() {
   return (
@@ -18,7 +20,8 @@ function AnaSayfa() {
       <div className="kutular">
         <Link to="/tic-tac-toe" className="neon-buton">Tic Tac Toe</Link>
         <Link to="/hangman" className="neon-buton">Adam Asmaca</Link>
-        <Link to="/memory-game" className="neon-buton">Kart Eşleme Oyunu</Link> {/* ✅ yeni buton */}
+        <Link to="/memory-game" className="neon-buton">Kart Eşleme Oyunu</Link>
+        <Link to="/f1-wordle" className="neon-buton">F1 Wordle</Link> {/* ✅ yeni buton */}
       </div>
     </div>
   );
@@ -31,7 +34,8 @@ function App() {
         <Route path="/" element={<AnaSayfa />} />
         <Route path="/tic-tac-toe" element={<Tic_tac_toe />} />
         <Route path="/hangman" element={<Hangman />} />
-        <Route path="/memory-game" element={<MemoryGame />} /> {/* ✅ yeni rota */}
+        <Route path="/memory-game" element={<MemoryGame />} />
+        <Route path="/f1-wordle" element={<F1Wordle />} /> {/* ✅ yeni rota */}
       </Routes>
     </Router>
   );

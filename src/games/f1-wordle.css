@@ -1,0 +1,125 @@
+.f1-wordle-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #121212;
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #ff1c1c44;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #ff1c1c;
+  text-shadow: 1px 1px 4px black;
+}
+
+.subtitle {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #bbbbbb;
+}
+
+.input-section {
+  position: relative;
+}
+
+input {
+  padding: 10px;
+  width: 70%;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 16px;
+  margin-left: 10px;
+  background-color: #ff1c1c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background-color: #d90000;
+}
+
+.suggestions {
+  position: absolute;
+  width: 70%;
+  background: #222;
+  border-radius: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+  margin-top: 5px;
+  padding-left: 0;
+}
+
+.suggestions li {
+  list-style: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #333;
+}
+
+.history {
+  margin-top: 20px;
+}
+
+.guess-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin: 10px 0;
+  padding: 8px;
+  background-color: #1e1e1e;
+  border-radius: 6px;
+}
+
+.correct {
+  background-color: #4caf50;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.wrong {
+  background-color: #f44336;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.arrow.up::after {
+  content: " ↑";
+  color: orange;
+}
+
+.arrow.down::after {
+  content: " ↓";
+  color: orange;
+}
+
+.arrow.correct::after {
+  content: " ✔";
+  color: #4caf50;
+}
+
+.win-message {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  color: #00e676;
+  font-weight: bold;
+  text-align: center;
+}
