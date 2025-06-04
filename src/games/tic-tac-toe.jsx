@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './sayfa1.css';
+import './tic-tac-toe.css';
 
-function Sayfa1() {
+function Tic_tac_toe() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
 
@@ -36,7 +36,7 @@ function Sayfa1() {
       : `Sıradaki: ${xIsNext ? 'X' : 'O'}`;
 
   return (
-    <div className="sayfa1-container">
+    <div className="tic-tac-toe-container">
       <h1>Tic Tac Toe</h1>
       <p>{status}</p>
 
@@ -56,7 +56,7 @@ function Sayfa1() {
         {renderSquare(8)}
       </div>
 
-      <button className="sayfa1-button" onClick={restartGame}>
+      <button className="tic-tac-toe-button" onClick={restartGame}>
         Yeniden Başlat
       </button>
 
@@ -87,4 +87,4 @@ function calculateWinner(squares) {
   return null;
 }
 
-export default Sayfa1;
+export default Tic_tac_toe;

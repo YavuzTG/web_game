@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './sayfa2.css';
+import './hangman.css';
 
 const tumKelimeler = ['programlama', 'oyun', 'bilgisayar', 'internet', 'klavye', 'fare'];
 
-function Sayfa2() {
+function Hangman() {
   const [karisikKelimeler, setKarisikKelimeler] = useState([]);
   const [kelimeIndex, setKelimeIndex] = useState(0);
   const [kelime, setKelime] = useState('');
@@ -57,7 +57,7 @@ function Sayfa2() {
   const alfabe = 'abcçdefgğhıijklmnoöprsştuüvyz'.split('');
 
   return (
-    <div className="sayfa2-container">
+    <div className="hangman-container">
       <h1>Adam Asmaca</h1>
 
       {/* Çöp adam çizimi */}
@@ -109,4 +109,4 @@ function Sayfa2() {
   );
 }
 
-export default Sayfa2;
+export default Hangman;

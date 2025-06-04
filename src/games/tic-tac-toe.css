@@ -16,7 +16,7 @@ body {
   transition: background 0.3s ease;
 }
 
-.sayfa1-container {
+.tic-tac-toe-container {
   padding: 30px;
   max-width: 420px;
   width: 90%;
@@ -27,7 +27,7 @@ body {
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-.sayfa1-container:hover {
+.tic-tac-toe-container:hover {
   transform: scale(1.02);
 }
 
@@ -68,7 +68,7 @@ p {
   transform: scale(1.05);
 }
 
-.sayfa1-button {
+.tic-tac-toe-button {
   margin-top: 25px;
   padding: 12px 20px;
   background: linear-gradient(135deg, #007acc, #005fa3);
@@ -81,7 +81,7 @@ p {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.sayfa1-button:hover {
+.tic-tac-toe-button:hover {
   background: linear-gradient(135deg, #005fa3, #003f7f);
   transform: scale(1.05);
 }
@@ -107,7 +107,7 @@ p {
     background: linear-gradient(135deg, #1e1e2f, #2c3e50);
   }
 
-  .sayfa1-container {
+  .tic-tac-toe-container {
     background: #1f1f2f;
     color: #eee;
   }
@@ -130,11 +130,11 @@ p {
     background-color: #3a3a4f;
   }
 
-  .sayfa1-button {
+  .tic-tac-toe-button {
     background: linear-gradient(135deg, #4faaff, #2b7dbf);
   }
 
-  .sayfa1-button:hover {
+  .tic-tac-toe-button:hover {
     background: linear-gradient(135deg, #2b7dbf, #1a5f9f);
   }
 

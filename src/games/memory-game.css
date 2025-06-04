@@ -1,0 +1,79 @@
+.memory-container {
+  text-align: center;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 100px);
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.memory-card {
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+.memory-card.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.memory-card.flipped .back {
+  transform: rotateY(0deg);
+}
+
+.memory-card .front,
+.memory-card .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease;
+}
+
+/* 🎨 Galatasaray renkli kart arkası */
+.memory-card .front {
+  background: linear-gradient(to right, #FDB913 50%, #A32638 50%);
+  transform: rotateY(0deg);
+  border: 2px solid #444;
+}
+
+/* Kartın ön yüzü (görsel) */
+.memory-card .back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 2px solid #444;
+}
+
+.memory-card img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.memory-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #A32638;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.memory-button:hover {
+  background-color: #891b2c;
+}

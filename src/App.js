@@ -1,11 +1,13 @@
 import './AnaSayfa.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import './games/sayfa1.css';
-import './games/sayfa2.css';
+import './games/tic-tac-toe.css';
+import './games/hangman.css';
+import './games/memory-game.css'; // ✅ yeni css eklendi
 
-import Sayfa1 from './games/sayfa1'; // ✅ küçük harflerle import
-import Sayfa2 from './games/sayfa2'; // ✅ küçük harflerle import
+import Tic_tac_toe from './games/tic-tac-toe';
+import Hangman from './games/hangman';
+import MemoryGame from './games/memory-game'; // ✅ yeni oyun bileşeni
 
 function AnaSayfa() {
   return (
@@ -14,8 +16,9 @@ function AnaSayfa() {
       <p className="aciklama">Bir oyun seç ve oynamaya başla!</p>
 
       <div className="kutular">
-        <Link to="/sayfa1" className="neon-buton">Tic Tac Toe</Link>
-        <Link to="/sayfa2" className="neon-buton">Adam Asmaca</Link>
+        <Link to="/tic-tac-toe" className="neon-buton">Tic Tac Toe</Link>
+        <Link to="/hangman" className="neon-buton">Adam Asmaca</Link>
+        <Link to="/memory-game" className="neon-buton">Kart Eşleme Oyunu</Link> {/* ✅ yeni buton */}
       </div>
     </div>
   );
@@ -26,8 +29,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<AnaSayfa />} />
-        <Route path="/sayfa1" element={<Sayfa1 />} />
-        <Route path="/sayfa2" element={<Sayfa2 />} />
+        <Route path="/tic-tac-toe" element={<Tic_tac_toe />} />
+        <Route path="/hangman" element={<Hangman />} />
+        <Route path="/memory-game" element={<MemoryGame />} /> {/* ✅ yeni rota */}
       </Routes>
     </Router>
   );
