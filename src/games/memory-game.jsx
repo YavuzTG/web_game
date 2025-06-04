@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // ✅ Ana sayfa linki için eklendi
 import './memory-game.css';
 
 import logo from '../assets/cards/5 yıldız logo.png';
@@ -105,7 +106,12 @@ function MemoryGame() {
           </div>
         ))}
       </div>
+
       <button className="memory-button" onClick={restartGame}>Yeniden Başlat</button>
+
+      {/* ✅ Ana Sayfa bağlantısı */}
+      <br /><br />
+      <Link to="/" className="back-link">Ana Sayfaya Dön</Link>
     </div>
   );
 }
