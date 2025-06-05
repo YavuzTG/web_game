@@ -13,28 +13,6 @@
   display: inline-block;
 }
 
-.harfler {
-  margin-top: 20px;
-}
-
-.harf {
-  background-color: #00ffea;
-  color: #000;
-  border: none;
-  margin: 5px;
-  padding: 10px;
-  font-size: 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.harf:disabled {
-  background-color: #555;
-  color: #ccc;
-  cursor: not-allowed;
-}
-
 .kazandın {
   color: lime;
   font-size: 1.5rem;
@@ -44,6 +22,7 @@
   color: red;
   font-size: 1.5rem;
 }
+
 .yeniden-baslat {
   background-color: #ff00ff;
   color: white;
@@ -61,6 +40,7 @@
   background-color: #e600e6;
   box-shadow: 0 0 15px #ff33ff;
 }
+
 .asmaca-container {
   margin: 30px auto;
   width: 200px;
@@ -94,7 +74,6 @@
   left: 145px;
 }
 
-/* Çöp adam parçaları */
 .kafa {
   width: 30px;
   height: 30px;
@@ -152,3 +131,60 @@
   left: 160px;
 }
 
+/* Yeni klavye stili */
+.harfler {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.harf-satiri {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.harf {
+  background-color: #00ffea;
+  color: #000;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.harf:disabled {
+  background-color: #555;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive düzen */
+@media (max-width: 600px) {
+  .harf {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .kelime {
+    font-size: 1.5rem;
+    letter-spacing: 6px;
+  }
+
+  .yeniden-baslat {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,187 @@
+.cocktail-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #0d0d0d;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #ff4081;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.tarif {
+  margin-bottom: 20px;
+  background: #1e1e1e;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.tarif ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.malzeme-listesi {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.malzeme-buton {
+  padding: 10px 12px;
+  background: #00bcd4;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 90px;
+  transition: background 0.3s;
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: 150px;
+  box-sizing: border-box;
+}
+
+.malzeme-buton:hover {
+  background: #0097a7;
+  color: white;
+}
+
+.bardak {
+  width: 100%;
+  max-width: 220px;
+  height: 300px;
+  margin: 10px auto 30px;
+  background: transparent;
+  border: 5px solid #ff4081;
+  border-radius: 0 0 30px 30px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.bardak-icerik {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    85% 100%,
+    15% 100%
+  );
+  border-radius: 0 0 25px 25px;
+}
+
+.bardak-dolgu {
+  flex: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background-color 0.5s ease;
+
+  /* Yazıyı ortala */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #222;
+  font-weight: 600;
+  font-size: 14px;
+  user-select: none;
+  padding: 0 5px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gonder-buton,
+.ana-sayfa-buton {
+  width: 90%;
+  max-width: 300px;
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.gonder-buton {
+  background-color: #ff4081;
+  color: white;
+}
+
+.gonder-buton:hover {
+  background-color: #f50057;
+}
+
+.ana-sayfa-buton {
+  background-color: #4caf50;
+  color: white;
+}
+
+.ana-sayfa-buton:hover {
+  background-color: #388e3c;
+}
+
+.mesaj {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  animation: fadein 0.5s ease;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobil uyum */
+@media (max-width: 600px) {
+  .malzeme-buton {
+    flex: 1 1 calc(50% - 10px);
+    font-size: 12px;
+    min-width: auto;
+  }
+
+  .cocktail-container {
+    padding: 15px;
+  }
+
+  .bardak {
+    height: 250px;
+  }
+}
+
+.butonlar-ust {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.butonlar-ust button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: #ff4081;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.butonlar-ust button:hover {
+  background-color: #f50057;
+}
+

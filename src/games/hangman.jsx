@@ -54,13 +54,10 @@ function Hangman() {
     }
   };
 
-  const alfabe = 'abcçdefgğhıijklmnoöprsştuüvyz'.split('');
-
   return (
     <div className="hangman-container">
       <h1>Adam Asmaca</h1>
 
-      {/* Çöp adam çizimi */}
       <div className="asmaca-container">
         <div className="cizgi g-dik"></div>
         <div className="cizgi g-ver"></div>
@@ -92,16 +89,42 @@ function Hangman() {
       )}
 
       <div className="harfler">
-        {alfabe.map((harf) => (
-          <button
-            key={harf}
-            className="harf"
-            onClick={() => handleGuess(harf)}
-            disabled={tahminler.includes(harf) || oyunuKazandin || oyunuKaybettin}
-          >
-            {harf}
-          </button>
-        ))}
+        <div className="harf-satiri">
+          {'qwertyuıopğü'.split('').map(harf => (
+            <button
+              key={harf}
+              className="harf"
+              onClick={() => handleGuess(harf)}
+              disabled={tahminler.includes(harf) || oyunuKazandin || oyunuKaybettin}
+            >
+              {harf}
+            </button>
+          ))}
+        </div>
+        <div className="harf-satiri">
+          {'asdfghjklşi'.split('').map(harf => (
+            <button
+              key={harf}
+              className="harf"
+              onClick={() => handleGuess(harf)}
+              disabled={tahminler.includes(harf) || oyunuKazandin || oyunuKaybettin}
+            >
+              {harf}
+            </button>
+          ))}
+        </div>
+        <div className="harf-satiri">
+          {'zxcvbnmöç'.split('').map(harf => (
+            <button
+              key={harf}
+              className="harf"
+              onClick={() => handleGuess(harf)}
+              disabled={tahminler.includes(harf) || oyunuKazandin || oyunuKaybettin}
+            >
+              {harf}
+            </button>
+          ))}
+        </div>
       </div>
 
       <Link to="/" className="back-link">Ana Sayfaya Dön</Link>
