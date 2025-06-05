@@ -72,7 +72,7 @@ function FruitNinja() {
     setOyunBitti(false);
   };
 
-  // Fare veya parmak üstüne gelince kesme
+  // Fare veya parmak üstüne gelince kes
   const handleHover = (obj) => {
     kir(obj.id, obj.isBomb);
   };
