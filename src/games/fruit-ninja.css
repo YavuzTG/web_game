@@ -1,0 +1,34 @@
+.fruit-ninja-container {
+  position: relative;
+  height: 100vh;
+  width: 200vh;
+  background: linear-gradient(to bottom, #000, #222);
+  background-image: url('C:\Users\Hp\Desktop\Oyun_sitesi\web_game\src\assets\fruit-ninja\fruit-ninja-background.png');
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.oyun-alani {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.meyve {
+  position: absolute;
+  width: 60px;
+  transition: transform 0.1s;
+  cursor: pointer;
+}
+
+.bitis-ekrani {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 20px;
+  border: 2px solid red;
+  z-index: 10;
+}

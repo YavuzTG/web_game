@@ -5,13 +5,15 @@ import './games/tic-tac-toe.css';
 import './games/hangman.css';
 import './games/memory-game.css';
 import './games/f1-wordle.css';
-import './games/cocktail-maker.css'; // ✅ yeni css eklendi
+import './games/cocktail-maker.css';
+import './games/fruit-ninja.css'; // ✅ Fruit Ninja CSS
 
 import Tic_tac_toe from './games/tic-tac-toe';
 import Hangman from './games/hangman';
 import MemoryGame from './games/memory-game';
 import F1Wordle from './games/f1-wordle';
-import CocktailMaker from './games/cocktail-maker'; // ✅ yeni oyun bileşeni
+import CocktailMaker from './games/cocktail-maker';
+import FruitNinja from './games/fruit-ninja'; // ✅ Fruit Ninja bileşeni
 
 function AnaSayfa() {
   return (
@@ -24,7 +26,8 @@ function AnaSayfa() {
         <Link to="/hangman" className="neon-buton">Adam Asmaca</Link>
         <Link to="/memory-game" className="neon-buton">Kart Eşleme Oyunu</Link>
         <Link to="/f1-wordle" className="neon-buton">F1 Wordle</Link>
-        <Link to="/cocktail-maker" className="neon-buton">Kokteyl Yapma Oyunu</Link> {/* ✅ yeni buton */}
+        <Link to="/cocktail-maker" className="neon-buton">Kokteyl Yapma Oyunu</Link>
+        <Link to="/fruit-ninja" className="neon-buton">Fruit Ninja</Link> {/* ✅ yeni buton */}
       </div>
     </div>
   );
@@ -39,7 +42,8 @@ function App() {
         <Route path="/hangman" element={<Hangman />} />
         <Route path="/memory-game" element={<MemoryGame />} />
         <Route path="/f1-wordle" element={<F1Wordle />} />
-        <Route path="/cocktail-maker" element={<CocktailMaker />} /> {/* ✅ yeni rota */}
+        <Route path="/cocktail-maker" element={<CocktailMaker />} />
+        <Route path="/fruit-ninja" element={<FruitNinja />} /> {/* ✅ yeni rota */}
       </Routes>
     </Router>
   );
