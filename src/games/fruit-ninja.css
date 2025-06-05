@@ -1,13 +1,16 @@
 .fruit-ninja-container {
   position: relative;
   height: 100vh;
-  width: 200vh;
+  width: 100vw;
   background: linear-gradient(to bottom, #000, #222);
-  background-image: url('C:\Users\Hp\Desktop\Oyun_sitesi\web_game\src\assets\fruit-ninja\fruit-ninja-background.png');
+  background-image: url('/public/assets/fruit-ninja/fruit-ninja-background.png');
+  background-size: cover;
+  background-position: center;
   color: white;
   text-align: center;
   overflow: hidden;
 }
+
 
 .oyun-alani {
   position: relative;
