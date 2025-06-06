@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // ✅ Ana menüye dönüş için eklendi
 import './fruit-ninja.css';
 
 import apple from '../assets/fruit-ninja/apple.png';
@@ -72,13 +73,15 @@ function FruitNinja() {
     setOyunBitti(false);
   };
 
-  // Fare veya parmak üstüne gelince kes
   const handleHover = (obj) => {
     kir(obj.id, obj.isBomb);
   };
 
   return (
     <div className="fruit-ninja-container">
+      {/* ✅ Ana Menü Butonu */}
+      <Link to="/" className="ana-menu-buton">Ana Menü</Link>
+
       <h2>Fruit Ninja</h2>
       <p>Puan: {puan}</p>
       {oyunBitti && (

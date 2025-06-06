@@ -1,47 +1,64 @@
-/* AnaSayfa.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
 .ana-sayfa {
-  background: #0d0d0d;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
   color: #fff;
   min-height: 100vh;
-  text-align: center;
-  padding: 60px 20px;
+  padding: 50px 20px;
   font-family: 'Orbitron', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .baslik {
-  font-size: 40px;
-  color: #0ff;
-  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  font-size: 48px;
+  color: #00fff7;
+  text-shadow: 0 0 12px #00fff7, 0 0 25px #00fff7;
   margin-bottom: 10px;
 }
 
 .aciklama {
   color: #ccc;
-  font-size: 18px;
-  margin-bottom: 40px;
+  font-size: 20px;
+  margin-bottom: 50px;
 }
 
 .kutular {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
-.neon-buton {
-  background: none;
+.oyun-karti {
+  background: #121212;
   border: 2px solid #ff00cc;
-  color: #ff00cc;
-  padding: 15px 30px;
-  font-size: 18px;
-  border-radius: 10px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #ff00cc55, 0 0 20px #ff00cc22;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc;
-  transition: all 0.3s ease-in-out;
+  color: white;
 }
 
-.neon-buton:hover {
-  background: #ff00cc;
-  color: #fff;
-  box-shadow: 0 0 20px #ff00cc, 0 0 40px #ff00cc;
+.oyun-karti:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ff00cc, 0 0 40px #ff00cc66;
+}
+
+.oyun-gorsel {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 2px solid #ff00cc;
+}
+
+.oyun-adi {
+  padding: 15px;
+  font-size: 20px;
+  text-align: center;
 }

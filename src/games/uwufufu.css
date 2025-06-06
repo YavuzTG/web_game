@@ -1,0 +1,197 @@
+/* Genel Reset ve Body */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #2c2c47);
+  color: #f2f2f2;
+}
+
+/* TestSelection Stilleri */
+.test-selection-container {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.test-option {
+  cursor: pointer;
+  border: 4px solid;
+  border-radius: 16px;
+  padding: 16px;
+  width: 320px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #222;
+}
+
+.test-option.left {
+  border-color: gold;
+  flex-direction: row-reverse;
+}
+
+.test-option.right {
+  border-color: crimson;
+  flex-direction: row;
+}
+
+.test-option:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.test-option.selected {
+  background-color: #eee;
+}
+
+.test-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  margin: 0 12px;
+  object-fit: cover;
+}
+
+.test-text h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.test-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Tournament Container */
+.tournament-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Tur Bilgisi */
+.tournament-container h2 {
+  font-size: 26px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* Kartlar */
+.match-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.animal-card {
+  background-color: white;
+  color: #111;
+  border-radius: 16px;
+  padding: 16px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 4px solid transparent;
+}
+
+.animal-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.left-card {
+  border-color: gold;
+}
+
+.right-card {
+  border-color: crimson;
+}
+
+.animal-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.animal-card h3 {
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+/* Winner Screen */
+.winner-container {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.winner-image {
+  width: 240px;
+  height: 240px;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
+
+/* Geri Dön Butonu */
+.back-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.back-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive Ayarlar */
+@media (max-width: 768px) {
+  .match-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .animal-card {
+    width: 90vw;
+  }
+
+  .test-selection-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .test-option {
+    width: 90vw;
+  }
+
+  .back-button {
+    top: 10px;
+    right: 10px;
+  }
+}
