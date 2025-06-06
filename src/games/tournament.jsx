@@ -9,10 +9,10 @@ const animalsData = Array.from({ length: 64 }, (_, i) => ({
 }));
 
 // Meyve resimleri (placeholder)
-const fruitsData = Array.from({ length: 64 }, (_, i) => ({
+const fruitsData = Array.from({ length: 32 }, (_, i) => ({
   id: i + 1,
   name: `Meyve ${i + 1}`,
-  image: `https://placehold.co/150x150/png?text=Meyve+${i + 1}`,
+  image: `/assets/uwufufu/meyve/meyveler${i + 1}.png`,
 }));
 
 // Renk resimleri (hex)

@@ -1,0 +1,93 @@
+body {
+  background: #faf8ef;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.game-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #bbada0;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #776e65;
+}
+
+.score-panel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #f9f6f2;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  grid-gap: 10px;
+  background-color: #bbada0;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.cell {
+  width: 80px;
+  height: 80px;
+  background-color: #cdc1b4;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 80px;
+  color: #776e65;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Değer renkleri */
+.value-2    { background-color: #eee4da; color: #776e65; }
+.value-4    { background-color: #ede0c8; color: #776e65; }
+.value-8    { background-color: #f2b179; color: #f9f6f2; }
+.value-16   { background-color: #f59563; color: #f9f6f2; }
+.value-32   { background-color: #f67c5f; color: #f9f6f2; }
+.value-64   { background-color: #f65e3b; color: #f9f6f2; }
+.value-128  { background-color: #edcf72; color: #f9f6f2; font-size: 24px; }
+.value-256  { background-color: #edcc61; color: #f9f6f2; font-size: 24px; }
+.value-512  { background-color: #edc850; color: #f9f6f2; font-size: 24px; }
+.value-1024 { background-color: #edc53f; color: #f9f6f2; font-size: 20px; }
+.value-2048 { background-color: #edc22e; color: #f9f6f2; font-size: 20px; }
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #a18979;
+}
+
+input {
+  padding: 8px;
+  margin-top: 10px;
+  font-size: 16px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.game-over {
+  background-color: rgba(238, 228, 218, 0.8);
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+}

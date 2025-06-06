@@ -1,22 +1,25 @@
 import './AnaSayfa.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 import './games/tic-tac-toe.css';
 import './games/hangman.css';
 import './games/memory-game.css';
 import './games/f1-wordle.css';
 import './games/cocktail-maker.css';
-import './games/fruit-ninja.css'; // ✅ Fruit Ninja CSS
+import './games/fruit-ninja.css';
 import './games/uwufufu.css';
+import './games/game-2048.css'; // ✅ 2048 CSS
 
 import Tic_tac_toe from './games/tic-tac-toe';
 import Hangman from './games/hangman';
 import MemoryGame from './games/memory-game';
 import F1Wordle from './games/f1-wordle';
 import CocktailMaker from './games/cocktail-maker';
-import FruitNinja from './games/fruit-ninja'; // ✅ Fruit Ninja bileşeni
+import FruitNinja from './games/fruit-ninja';
 import TestSelection from './games/test-selection';
 import Tournament from './games/tournament';
+import Game2048 from './games/game-2048'; // ✅ 2048 bileşeni
 
 function AnaSayfa() {
   return (
@@ -56,8 +59,13 @@ function AnaSayfa() {
         </Link>
 
         <Link to="/tournament" className="oyun-karti">
-          <img src="/assets/anasayfa/uwufufu.png" alt="Tournament" className="oyun-gorsel" />
+          <img src="/assets/anasayfa/tournament.png" alt="Tournament" className="oyun-gorsel" />
           <div className="oyun-adi">Uwufufu</div>
+        </Link>
+
+        <Link to="/game-2048" className="oyun-karti"> {/* ✅ Yeni kutu */}
+          <img src="/assets/anasayfa/game-2048.png" alt="2048" className="oyun-gorsel" />
+          <div className="oyun-adi">2048</div>
         </Link>
       </div>
     </div>
@@ -77,8 +85,7 @@ function App() {
         <Route path="/fruit-ninja" element={<FruitNinja />} />
         <Route path="/tournament" element={<TestSelection />} />
         <Route path="/tournament/:testId" element={<Tournament />} />
-
-
+        <Route path="/game-2048" element={<Game2048 />} /> {/* ✅ 2048 rotası */}
       </Routes>
     </Router>
   );
