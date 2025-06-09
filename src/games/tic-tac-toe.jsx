@@ -80,7 +80,7 @@ function Tic_tac_toe() {
           const nextSquares = squares.slice();
           nextSquares[bestMove] = botSymbol;
           setSquares(nextSquares);
-          setXIsNext(true);
+          setXIsNext(!xIsNext);  // Burada düzeltildi: sırayı tersine çevir
         }
       }, 500);
 
