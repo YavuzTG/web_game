@@ -59,17 +59,34 @@ p {
   cursor: pointer;
   margin: 6px;
   border-radius: 10px;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.3s ease;
   color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
-.square:hover {
+.square:hover:not(:disabled) {
   background-color: #e6f2ff;
   transform: scale(1.05);
 }
 
+.square:disabled {
+  cursor: default;
+  opacity: 0.8;
+}
+
+.winning-square {
+  background-color: #00d676 !important;
+  color: white !important;
+  font-weight: bolder;
+  box-shadow: 0 0 15px 4px #00d676;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
 .tic-tac-toe-button {
-  margin-top: 25px;
+  margin: 12px 8px;
   padding: 12px 20px;
   background: linear-gradient(135deg, #007acc, #005fa3);
   color: white;
@@ -78,12 +95,21 @@ p {
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  user-select: none;
+  box-shadow: 0 3px 7px rgba(0, 122, 204, 0.4);
 }
 
-.tic-tac-toe-button:hover {
+.tic-tac-toe-button:hover:not(:disabled) {
   background: linear-gradient(135deg, #005fa3, #003f7f);
   transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 95, 163, 0.7);
+}
+
+.tic-tac-toe-button:disabled {
+  cursor: default;
+  opacity: 0.6;
+  box-shadow: none;
 }
 
 .back-link {
@@ -94,11 +120,26 @@ p {
   font-weight: bold;
   font-size: 0.95rem;
   transition: color 0.2s ease;
+  user-select: none;
 }
 
 .back-link:hover {
   color: #005fa3;
   text-decoration: underline;
+}
+
+/* Seçim Ekranı Butonları */
+.selection-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.selection-buttons .tic-tac-toe-button {
+  flex: 1 1 40%;
+  min-width: 120px;
 }
 
 /* 🌙 Dark Mode */
@@ -126,16 +167,24 @@ p {
     border: 2px solid #4faaff;
   }
 
-  .square:hover {
+  .square:hover:not(:disabled) {
     background-color: #3a3a4f;
+  }
+
+  .winning-square {
+    background-color: #00d676 !important;
+    color: white !important;
+    box-shadow: 0 0 15px 4px #00d676;
   }
 
   .tic-tac-toe-button {
     background: linear-gradient(135deg, #4faaff, #2b7dbf);
+    box-shadow: 0 3px 7px rgba(79, 170, 255, 0.4);
   }
 
-  .tic-tac-toe-button:hover {
+  .tic-tac-toe-button:hover:not(:disabled) {
     background: linear-gradient(135deg, #2b7dbf, #1a5f9f);
+    box-shadow: 0 5px 15px rgba(43, 125, 191, 0.7);
   }
 
   .back-link {
