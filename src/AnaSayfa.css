@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .baslik {
@@ -16,12 +17,15 @@
   color: #00fff7;
   text-shadow: 0 0 12px #00fff7, 0 0 25px #00fff7;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .aciklama {
   color: #ccc;
   font-size: 20px;
   margin-bottom: 50px;
+  text-align: center;
+  max-width: 600px;
 }
 
 .kutular {
@@ -31,6 +35,7 @@
   width: 100%;
   max-width: 1200px;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .oyun-karti {
@@ -61,4 +66,47 @@
   padding: 15px;
   font-size: 20px;
   text-align: center;
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 768px) {
+  .baslik {
+    font-size: 36px;
+  }
+
+  .aciklama {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .kutular {
+    gap: 25px;
+  }
+
+  .oyun-adi {
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  .oyun-gorsel {
+    height: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .baslik {
+    font-size: 28px;
+  }
+
+  .aciklama {
+    font-size: 16px;
+  }
+
+  .oyun-adi {
+    font-size: 16px;
+  }
+
+  .oyun-gorsel {
+    height: 120px;
+  }
 }
