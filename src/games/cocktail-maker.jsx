@@ -12,7 +12,7 @@ const malzemeler = [
   'Şeftali Likörü', 'Kızılcık Suyu', 'Blue Curacao', 'Pisco',
   'Grenadin', 'Drambuie', 'Vermut', 'Aperol', 'Chambord',
   'Maraschino Likörü', 'Violet Likörü', 'Rye Viski', 'Peychaud’s Bitters',
-  'Absinthe', 'Şeftali Püresi', 'Lillet Blanc', 'Vanilya Şurubu', 'Çarkıfelek Suyu'
+  'Absinthe', 'Şeftali Püresi', 'Lillet Blanc', 'Vanilya Şurubu'
 ];
 
 const renkler = {
@@ -64,7 +64,6 @@ const renkler = {
   'Şeftali Püresi': '#FFE5B4',
   'Lillet Blanc': '#FFFACD',
   'Vanilya Şurubu': '#F3E5AB',
-  'Çarkıfelek Suyu': '#FFDD00'
 };
 
 const tarifler = [
@@ -107,7 +106,6 @@ const tarifler = [
   { ad: "Zombie", malzemeler: ['Rom', 'Kahve Likörü', 'Ananas Suyu', 'Lime', 'Grenadin'] },
   { ad: "Vesper Martini", malzemeler: ['Cin', 'Votka', 'Lillet Blanc'] },
   { ad: "Caipiroska", malzemeler: ['Votka', 'Lime', 'Şeker Şurubu'] },
-  { ad: "EÖG", malzemeler: ['Vanilya Şurubu', 'Votka', 'Şeker Şurubu', 'Çarkıfelek Suyu'] }
 ];
 
 function CocktailMaker() {
