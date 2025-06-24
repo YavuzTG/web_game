@@ -11,6 +11,7 @@ import './games/fruit-ninja.css';
 import './games/uwufufu.css';
 import './games/game-2048.css'; // ✅ 2048 CSS
 import './games/dino-game.css';
+import './games/car-game.css';
 
 import Tic_tac_toe from './games/tic-tac-toe';
 import Hangman from './games/hangman';
@@ -22,6 +23,7 @@ import TestSelection from './games/test-selection';
 import Tournament from './games/tournament';
 import Game2048 from './games/game-2048'; // ✅ 2048 bileşeni
 import DinoGame from './games/dino-game';
+import CarGame from './games/car-game';
 
 function AnaSayfa() {
   return (
@@ -74,6 +76,11 @@ function AnaSayfa() {
           <img src="/assets/anasayfa/dino-game.png" alt="Engelden Kaçış" className="oyun-gorsel" />
           <div className="oyun-adi">Engelden Kaçış</div>
         </Link>
+
+        <Link to="/car-game" className="oyun-karti">
+          <img src="/assets/anasayfa/car-game.png" alt="Araba" className="oyun-gorsel" />
+          <div className="oyun-adi">Araba</div>
+        </Link>
       </div>
     </div>
   );
@@ -94,6 +101,7 @@ function App() {
         <Route path="/tournament/:testId" element={<Tournament />} />
         <Route path="/game-2048" element={<Game2048 />} /> {/* ✅ 2048 rotası */}
         <Route path="/dino-game" element={<DinoGame />} />
+        <Route path="/car-game" element={<CarGame />} />
       </Routes>
     </Router>
   );
