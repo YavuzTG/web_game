@@ -40,10 +40,33 @@ export default function DinoGame() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    function drawDino(y) {
-      ctx.fillStyle = "black";
-      ctx.fillRect(50, y, 40, 40);
-    }
+   function drawDino(y) {
+  const x = 50;
+  ctx.fillStyle = "#222";
+
+  // Gövde
+  ctx.fillRect(x + 10, y + 10, 20, 20);
+
+  // Kafa
+  ctx.fillRect(x + 25, y, 15, 15);
+
+  // Göz
+  ctx.fillStyle = "white";
+  ctx.fillRect(x + 35, y + 3, 3, 3);
+
+  // Ayaklar
+  ctx.fillStyle = "#222";
+  ctx.fillRect(x + 10, y + 30, 6, 10);
+  ctx.fillRect(x + 24, y + 30, 6, 10);
+
+  // Kuyruk
+  ctx.beginPath();
+  ctx.moveTo(x + 10, y + 20);
+  ctx.lineTo(x, y + 25);
+  ctx.lineTo(x + 10, y + 25);
+  ctx.fill();
+}
+
 
     function drawCactus(x) {
       ctx.fillStyle = "green";
