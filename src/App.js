@@ -12,6 +12,9 @@ import './games/uwufufu.css';
 import './games/game-2048.css'; // ✅ 2048 CSS
 import './games/dino-game.css';
 import './games/car-game.css';
+import './games/minesweeper.css';
+import './games/color-mixer.css';
+import './games/flappy-bird.css';
 
 import Tic_tac_toe from './games/tic-tac-toe';
 import Hangman from './games/hangman';
@@ -24,6 +27,9 @@ import Tournament from './games/tournament';
 import Game2048 from './games/game-2048'; // ✅ 2048 bileşeni
 import DinoGame from './games/dino-game';
 import CarGame from './games/car-game';
+import Minesweeper from './games/minesweeper';
+import ColorMixer from './games/color-mixer';
+import FlappyBird from './games/flappy-bird';
 
 function AnaSayfa() {
   return (
@@ -81,6 +87,22 @@ function AnaSayfa() {
           <img src="/assets/anasayfa/car-game.png" alt="Araba" className="oyun-gorsel" />
           <div className="oyun-adi">Araba</div>
         </Link>
+
+        <Link to="/minesweeper" className="oyun-karti">
+          <img src="/assets/anasayfa/minesweeper.png" alt="Minesweeper" className="oyun-gorsel" />
+         <div className="oyun-adi">Mayın Tarlası</div>
+        </Link>
+
+        <Link to="/color-mixer" className="oyun-karti">
+          <img src="/assets/anasayfa/color-mixer.png" alt="Renk Karıştırma" className="oyun-gorsel" />
+          <div className="oyun-adi">Renk Karıştır</div>
+        </Link>
+
+        <Link to="/flappy-bird" className="oyun-karti">
+          <img src="/assets/anasayfa/flappy-bird.png" alt="Flappy Bird" className="oyun-gorsel" />
+          <div className="oyun-adi">Flappy Bird</div>
+        </Link>
+
       </div>
     </div>
   );
@@ -102,6 +124,10 @@ function App() {
         <Route path="/game-2048" element={<Game2048 />} /> {/* ✅ 2048 rotası */}
         <Route path="/dino-game" element={<DinoGame />} />
         <Route path="/car-game" element={<CarGame />} />
+        <Route path="/minesweeper" element={<Minesweeper />} />
+        <Route path="/color-mixer" element={<ColorMixer />} />
+        <Route path="/flappy-bird" element={<FlappyBird />} />
+
       </Routes>
     </Router>
   );

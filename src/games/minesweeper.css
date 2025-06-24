@@ -1,0 +1,79 @@
+.minesweeper {
+  display: grid;
+  gap: 4px;
+  max-width: fit-content;
+  margin: 20px auto;
+}
+.cell {
+  width: 40px;
+  height: 40px;
+  background-color: #444;
+  cursor: pointer;
+  border: 2px solid #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+.cell.revealed {
+  background-color: #888;
+}
+.cell.mine {
+  background-color: red;
+}
+.minesweeper-wrapper {
+  text-align: center;
+  padding: 20px;
+}
+
+.minesweeper {
+  display: grid;
+  gap: 4px;
+  margin: 20px auto;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  background-color: #444;
+  cursor: pointer;
+  border: 2px solid #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+.cell.revealed {
+  background-color: #888;
+}
+.cell.mine {
+  background-color: red;
+}
+.buttons {
+  margin-top: 20px;
+}
+.buttons button {
+  padding: 10px 16px;
+  margin: 0 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #2a2a5e;
+  color: #fff;
+  transition: background 0.2s;
+}
+.buttons button:hover {
+  background-color: #444488;
+}
+.cell.flagged {
+  background-color: #2a8f2a;
+  color: yellow;
+  font-weight: bold;
+  font-size: 22px;
+  user-select: none;
+}
