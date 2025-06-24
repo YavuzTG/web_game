@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";  // <-- bunu ekle
+import { useNavigate } from "react-router-dom";
 import "./dino-game.css";
 
 export default function DinoGame() {
   const canvasRef = useRef(null);
-  const navigate = useNavigate();  // <-- useNavigate hook'u
+  const navigate = useNavigate();
 
   const [dinoY, setDinoY] = useState(120);
   const [jumping, setJumping] = useState(false);
@@ -21,11 +21,9 @@ export default function DinoGame() {
 
   useEffect(() => {
     if (gameOver) return;
-
     const interval = setInterval(() => {
       setCactusSpeed((speed) => +(speed * 1.2).toFixed(2));
     }, 10000);
-
     return () => clearInterval(interval);
   }, [gameOver]);
 
@@ -64,21 +62,14 @@ export default function DinoGame() {
     function drawGameOver(finalScore) {
       ctx.fillStyle = "rgba(0,0,0,0.7)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
       ctx.fillStyle = "white";
       ctx.font = "40px Arial";
       ctx.textAlign = "center";
       ctx.fillText("Oyun Bitti!", canvas.width / 2, canvas.height / 2 - 30);
-
       ctx.font = "24px Arial";
       ctx.fillText(`Skorun: ${finalScore}`, canvas.width / 2, canvas.height / 2 + 10);
-
       ctx.font = "18px Arial";
-      ctx.fillText(
-        "Tekrar başlatmak için boşluk tuşuna bas",
-        canvas.width / 2,
-        canvas.height / 2 + 50
-      );
+      ctx.fillText("Tekrar başlatmak için ekrana dokun veya boşluk tuşuna bas", canvas.width / 2, canvas.height / 2 + 50);
     }
 
     function update() {
@@ -94,12 +85,10 @@ export default function DinoGame() {
       }
 
       let newCactusX = cactusX - cactusSpeed;
-
       if (newCactusX < -30) {
         newCactusX = 600;
         setScore((prev) => prev + 1);
       }
-
       setCactusX(newCactusX);
 
       if (jumping) {
@@ -132,25 +121,29 @@ export default function DinoGame() {
   useEffect(() => {
     function handleKeyDown(e) {
       if (e.code === "Space") {
-        if (gameOver) {
-          setGameOver(false);
-          setCactusX(600);
-          setDinoY(120);
-          setJumping(false);
-          velocityRef.current = 0;
-          setCactusSpeed(6);
-          setScore(0);
-        } else if (!jumping) {
-          setJumping(true);
-          velocityRef.current = jumpSpeed;
-        }
+        handleJump();
       }
     }
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [jumping, gameOver]);
+  });
 
-  // Ana sayfaya yönlendirme fonksiyonu
+  // Dokunma ve tıklama ile zıplama / restart
+  function handleJump() {
+    if (gameOver) {
+      setGameOver(false);
+      setCactusX(600);
+      setDinoY(120);
+      setJumping(false);
+      velocityRef.current = 0;
+      setCactusSpeed(6);
+      setScore(0);
+    } else if (!jumping) {
+      setJumping(true);
+      velocityRef.current = jumpSpeed;
+    }
+  }
+
   function goHome() {
     navigate("/");
   }
@@ -162,9 +155,10 @@ export default function DinoGame() {
         width={600}
         height={180}
         className="game-canvas"
+        onClick={handleJump}
+        onTouchStart={handleJump}
       />
-      {!gameOver && <p>Boşluk tuşuna basarak zıpla! Skorun ekranda gözüküyor.</p>}
-
+      {!gameOver && <p>Boşluk tuşuna bas veya dokunarak zıpla</p>}
       <button className="btn-home" onClick={goHome}>
         Ana Sayfaya Dön
       </button>

@@ -12,6 +12,16 @@
   display: block;
   margin: 0 auto;
   border-radius: 8px;
+
+  /* Mobil uyum için */
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+}
+
+p {
+  font-size: 16px;
+  margin: 10px 0;
 }
 
 .btn-home {
@@ -28,4 +38,16 @@
 
 .btn-home:hover {
   background-color: #333;
+}
+
+/* Mobil ekranlar için daha küçük yazılar */
+@media (max-width: 500px) {
+  .btn-home {
+    width: 90%;
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 14px;
+  }
 }
