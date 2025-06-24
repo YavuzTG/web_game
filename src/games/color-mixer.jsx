@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './color-mixer.css';
 
 const getRandomColor = () => ({
@@ -21,6 +22,7 @@ export default function ColorMix() {
   const [targetColor, setTargetColor] = useState(getRandomColor());
   const [playerColor, setPlayerColor] = useState({ r: 0, g: 0, b: 0 });
   const [difference, setDifference] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -68,6 +70,7 @@ export default function ColorMix() {
       <div className="buttons">
         <button onClick={handleMix}>🎛 Karıştır</button>
         <button onClick={handleNewColor}>🔄 Yeni Hedef</button>
+        <button onClick={() => navigate('/')}>🏠 Ana Sayfa</button>
       </div>
 
       {difference !== null && (
