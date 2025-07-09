@@ -1,31 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@400;700&display=swap');
 
-.ana-sayfa {
-  background-color: #0f1115;
-  color: #e0e0e0;
-  min-height: 100vh;
-  padding: 60px 20px;
-  font-family: 'Roboto', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  color: #ffffff;
+  font-family: 'Rubik', sans-serif;
   box-sizing: border-box;
 }
 
+.ana-sayfa {
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .baslik {
-  font-size: 42px;
-  color: #ffffff;
-  margin-bottom: 16px;
-  font-weight: 700;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 36px;
+  color: #ffcc70;
+  text-shadow: 0 0 10px rgba(255, 204, 112, 0.6);
+  margin-bottom: 20px;
   text-align: center;
 }
 
 .aciklama {
-  color: #b0b0b0;
   font-size: 18px;
-  margin-bottom: 40px;
-  text-align: center;
+  color: #e0e0e0;
   max-width: 700px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .kutular {
@@ -35,44 +41,53 @@
   width: 100%;
   max-width: 1000px;
   padding: 0 20px;
-  box-sizing: border-box;
 }
 
 .oyun-karti {
-  background-color: #1c1f26;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  background: #2a2a40;
+  border: 2px solid #444460;
+  border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  position: relative;
 }
 
 .oyun-karti:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 25px rgba(255, 204, 112, 0.4);
+  border-color: #ffcc70;
 }
 
 .oyun-gorsel {
   width: 100%;
   height: 160px;
   object-fit: cover;
-  background-color: #2c2f36;
+  background-color: #3a3a50;
+  transition: filter 0.3s;
+}
+
+.oyun-karti:hover .oyun-gorsel {
+  filter: brightness(1.15);
 }
 
 .oyun-adi {
   padding: 16px;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   text-align: center;
-  color: #ffffff;
+  color: #fffcf2;
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #444460;
 }
 
-/* Responsive ayarlar */
+/* Responsive tasarım */
 @media (max-width: 768px) {
   .baslik {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .aciklama {
@@ -84,7 +99,7 @@
   }
 
   .oyun-adi {
-    font-size: 18px;
+    font-size: 16px;
     padding: 14px;
   }
 
@@ -95,7 +110,7 @@
 
 @media (max-width: 480px) {
   .baslik {
-    font-size: 26px;
+    font-size: 22px;
   }
 
   .aciklama {
@@ -103,7 +118,7 @@
   }
 
   .oyun-adi {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .oyun-gorsel {
