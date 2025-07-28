@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import './uwufufu.css';
 
 // Hayvan resimleri
 const animalsData = Array.from({ length: 64 }, (_, i) => ({
@@ -37,7 +38,6 @@ function shuffle(array) {
 
 export default function Tournament() {
   const { testId } = useParams();
-  const navigate = useNavigate();
 
   const getInitialData = () => {
     switch (testId) {
@@ -87,16 +87,31 @@ export default function Tournament() {
 
   if (winner) {
     return (
-      <div className="winner-container" style={{ position: 'relative' }}>
-        <button
-          className="back-button"
-          onClick={() => navigate('/tournament')}
-          style={{ position: 'absolute', top: 20, right: 20 }}
-        >
-          Geri Gel
-        </button>
-        <h1>Kazanan: {winner.name}</h1>
-        <img src={winner.image} alt={winner.name} className="winner-image" />
+      <div className="tournament-container">
+        <div className="tournament-header">
+          <Link to="/tournament" className="back-button">← Geri Dön</Link>
+          <h1>🏆 Turnuva Tamamlandı!</h1>
+          <div></div>
+        </div>
+        
+        <div className="winner-container">
+          <div className="winner-card">
+            <div className="winner-crown">👑</div>
+            <img src={winner.image} alt={winner.name} className="winner-image" />
+            <h2 className="winner-name">{winner.name}</h2>
+            <div className="winner-title">ŞAMPIYON</div>
+            <div className="celebration">🎉 🎊 🎉</div>
+          </div>
+        </div>
+
+        <div className="victory-actions">
+          <Link to="/tournament" className="play-again-button">
+            🔄 Tekrar Oyna
+          </Link>
+          <Link to="/" className="home-button">
+            🏠 Ana Sayfa
+          </Link>
+        </div>
       </div>
     );
   }
@@ -104,41 +119,64 @@ export default function Tournament() {
   const firstAnimal = currentRoundAnimals[currentMatchIndex * 2];
   const secondAnimal = currentRoundAnimals[currentMatchIndex * 2 + 1];
 
-  return (
-    <div className="tournament-container" style={{ position: 'relative' }}>
-      <button
-        className="back-button"
-        onClick={() => navigate('/tournament')}
-        style={{ position: 'absolute', top: 20, right: 20, zIndex: 10 }}
-      >
-        Geri Gel
-      </button>
+  const getTournamentTitle = () => {
+    switch (testId) {
+      case 'fruits': return '🍎 Meyve Turnuvası';
+      case 'colors': return '🎨 Renk Turnuvası';
+      case 'animals':
+      default: return '🐾 Hayvan Turnuvası';
+    }
+  };
 
-      <h2>
-        Tur {round} / Maç: {currentMatchIndex + 1} / {currentRoundAnimals.length / 2}
-      </h2>
+  return (
+    <div className="tournament-container">
+      <div className="tournament-header">
+        <Link to="/tournament" className="back-button">← Geri Dön</Link>
+        <h1>{getTournamentTitle()}</h1>
+        <div></div>
+      </div>
+
+      <div className="tournament-info">
+        <div className="round-info">
+          <span className="round-badge">Tur {round}</span>
+          <span className="match-info">Maç {currentMatchIndex + 1} / {Math.floor(currentRoundAnimals.length / 2)}</span>
+        </div>
+        <div className="vs-indicator">VS</div>
+      </div>
 
       <div className="match-container">
         <div
-          className="animal-card left-card"
+          className="contestant-card left-card"
           onClick={() => handleSelect(firstAnimal)}
           role="button"
           tabIndex={0}
           onKeyDown={(e) => { if (e.key === 'Enter') handleSelect(firstAnimal); }}
         >
-          <img src={firstAnimal.image} alt={firstAnimal.name} className="animal-image" />
-          <h3>{firstAnimal.name}</h3>
+          <div className="card-inner">
+            <img src={firstAnimal.image} alt={firstAnimal.name} className="contestant-image" />
+            <h3>{firstAnimal.name}</h3>
+            <div className="select-button">Seç 👈</div>
+          </div>
         </div>
 
         <div
-          className="animal-card right-card"
+          className="contestant-card right-card"
           onClick={() => handleSelect(secondAnimal)}
           role="button"
           tabIndex={0}
           onKeyDown={(e) => { if (e.key === 'Enter') handleSelect(secondAnimal); }}
         >
-          <img src={secondAnimal.image} alt={secondAnimal.name} className="animal-image" />
-          <h3>{secondAnimal.name}</h3>
+          <div className="card-inner">
+            <img src={secondAnimal.image} alt={secondAnimal.name} className="contestant-image" />
+            <h3>{secondAnimal.name}</h3>
+            <div className="select-button">Seç 👉</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="tournament-progress">
+        <div className="progress-text">
+          Kalan: {currentRoundAnimals.length - (currentMatchIndex + 1) * 2 + selectedAnimalsNextRound.length} tur
         </div>
       </div>
     </div>

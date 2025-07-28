@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './cocktail-maker.css';
 
 const malzemeler = [
@@ -116,8 +116,6 @@ function CocktailMaker() {
   const [seviye, setSeviye] = useState(1);
   const [mesaj, setMesaj] = useState(null);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     if (sure === 0) {
       setMesaj('Süre doldu! Oyun yeniden başlatılıyor...');
@@ -170,21 +168,36 @@ function CocktailMaker() {
     }
   };
 
-  const anasayfayaDon = () => {
-    navigate('/');
-  };
-
   return (
     <div className="cocktail-container">
-      <h2>Kokteyl Yapma Oyunu</h2>
-      <p><strong>Seviye:</strong> {seviye} | <strong>Skor:</strong> {skor} | <strong>Süre:</strong> {sure}s</p>
-
-      <div className="tarif">
-        <h3>Tarif: {aktifTarif.ad}</h3>
-        <ul>
-          {aktifTarif.malzemeler.map((m, i) => <li key={i}>{m}</li>)}
-        </ul>
+      <div className="cocktail-header">
+        <Link to="/" className="back-button">← Ana Sayfa</Link>
+        <h1>🍹 Kokteyl Yapma Oyunu</h1>
+        <div></div> {/* Spacing için boş div */}
       </div>
+
+      <div className="cocktail-game">
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          marginBottom: '20px',
+          flexWrap: 'wrap',
+          gap: '10px',
+          fontSize: '16px',
+          fontWeight: '600',
+          color: '#667eea'
+        }}>
+          <span>Seviye: {seviye}</span>
+          <span>Skor: {skor}</span>
+          <span>Süre: {sure}s</span>
+        </div>
+
+        <div className="tarif">
+          <h3>🍸 Tarif: {aktifTarif.ad}</h3>
+          <ul>
+            {aktifTarif.malzemeler.map((m, i) => <li key={i}>{m}</li>)}
+          </ul>
+        </div>
 
       <div className="malzeme-listesi">
         {malzemeler.map((malzeme, i) => (
@@ -198,29 +211,47 @@ function CocktailMaker() {
         ))}
       </div>
 
-<div className="butonlar-ust">
-  <button onClick={() => setBardak(bardak.slice(0, -1))}>Geri Al</button>
-  <button onClick={() => setBardak([])}>Temizle</button>
-</div>
+        <div className="butonlar-ust">
+          <button onClick={() => setBardak(bardak.slice(0, -1))}>Geri Al</button>
+          <button onClick={() => setBardak([])}>Temizle</button>
+        </div>
 
-      <div className="bardak">
-        <div className="bardak-icerik">
-          {bardak.map((malzeme, i) => (
-            <div
-              key={i}
-              className="bardak-dolgu"
-              style={{ backgroundColor: renkler[malzeme] || '#999' }}
-            >
-              {malzeme}
-            </div>
-          ))}
+        <div className="bardak">
+          <div className="bardak-icerik">
+            {bardak.map((malzeme, i) => (
+              <div
+                key={i}
+                className="bardak-dolgu"
+                style={{ backgroundColor: renkler[malzeme] || '#999' }}
+              >
+                {malzeme}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {mesaj && <div className="mesaj">{mesaj}</div>}
+
+        <button className="gonder-buton" onClick={kontrolEt}>🍹 Kokteyli Gönder</button>
+
+        {/* Nasıl Oynanır */}
+        <div className="instructions">
+          <h3>🍸 Nasıl Oynanır</h3>
+          <ul>
+            <li>🎯 <strong>Amaç:</strong> Verilen tarifleri doğru şekilde yapın</li>
+            <li>📋 <strong>Tarif:</strong> Üstte gösterilen malzemeleri kullanın</li>
+            <li>🧪 <strong>Ekleme:</strong> Malzeme butonlarına tıklayarak bardağa ekleyin</li>
+            <li>↩️ <strong>Geri Al:</strong> Son eklenen malzemeyi çıkarın</li>
+            <li>🧽 <strong>Temizle:</strong> Bardağı tamamen boşaltın</li>
+            <li>✅ <strong>Gönder:</strong> Kokteyli kontrol ettirin</li>
+            <li>⏰ <strong>Süre:</strong> Zamanın dolmadan tarifleri tamamlayın</li>
+            <li>📈 <strong>Seviye:</strong> Doğru tariflerle bir sonraki seviyeye geçin</li>
+          </ul>
+          <p className="tip">
+            💡 <strong>İpucu:</strong> Malzeme sırası önemlidir! Tarifte yazılan sırayla ekleyin.
+          </p>
         </div>
       </div>
-
-      {mesaj && <div className="mesaj">{mesaj}</div>}
-
-      <button className="gonder-buton" onClick={kontrolEt}>Kokteyli Gönder</button>
-      <button className="ana-sayfa-buton" onClick={anasayfayaDon}>Ana Sayfaya Dön</button>
     </div>
   );
 }

@@ -2,14 +2,16 @@
 
 .f1-wordle-container {
   max-width: 700px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 20px auto;
+  padding: 15px;
   background-color: #121212;
   color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 0 20px #ff1c1c44;
   font-family: 'Segoe UI', sans-serif;
   position: relative;
+  min-height: calc(100vh - 40px);
+  box-sizing: border-box;
 }
 
 .top-right-button {
@@ -39,39 +41,39 @@
 }
 
 .title {
-  font-size: 2rem;
-  margin-top: 60px;
-  margin-bottom: 10px;
+  font-size: 1.7rem;
+  margin-top: 50px;
+  margin-bottom: 8px;
   color: #ff1c1c;
   text-shadow: 1px 1px 4px black;
   text-align: center;
 }
 
 .subtitle {
-  margin-bottom: 20px;
-  font-size: 1rem;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
   color: #bbbbbb;
   text-align: center;
 }
 
 .input-section {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .game-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 input {
   flex: 1;
-  padding: 12px 15px;
+  padding: 10px 12px;
   border: 2px solid #333;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #222;
   color: white;
   transition: border-color 0.3s ease;
@@ -88,7 +90,7 @@ input::placeholder {
 }
 
 button {
-  padding: 12px 20px;
+  padding: 10px 16px;
   margin-left: 0;
   background-color: #ff1c1c;
   color: white;
@@ -97,7 +99,7 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 button:hover:not(:disabled) {
@@ -148,13 +150,14 @@ button:disabled {
   display: flex;
   justify-content: space-around;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 15px;
   color: #ff1c1c;
   text-shadow: 1px 1px 2px black;
   background-color: #222;
-  padding: 10px;
+  padding: 8px;
   border-radius: 8px;
   border: 1px solid #333;
+  font-size: 0.9rem;
 }
 
 .header-info div {
@@ -162,8 +165,8 @@ button:disabled {
 }
 
 .history {
-  margin-top: 10px;
-  max-height: 400px;
+  margin-top: 8px;
+  max-height: 250px;
   overflow-y: auto;
   border: 1px solid #333;
   border-radius: 8px;
@@ -197,11 +200,11 @@ button:disabled {
 
 .win-message {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #4CAF50;
-  margin: 20px 0;
-  padding: 15px;
+  margin: 15px 0;
+  padding: 12px;
   background-color: #1a2e1a;
   border: 2px solid #4CAF50;
   border-radius: 8px;
@@ -209,8 +212,8 @@ button:disabled {
 }
 
 .instructions {
-  margin-top: 30px;
-  padding: 20px;
+  margin-top: 15px;
+  padding: 12px;
   background-color: #1a1a1a;
   border: 1px solid #333;
   border-radius: 8px;
@@ -218,8 +221,8 @@ button:disabled {
 
 .instructions h3 {
   color: #ff1c1c;
-  margin-bottom: 15px;
-  font-size: 1.3rem;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
   text-align: center;
   text-shadow: 1px 1px 2px black;
 }
@@ -227,29 +230,29 @@ button:disabled {
 .instructions ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 15px 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
 }
 
 .instructions li {
-  padding: 8px 0;
-  font-size: 1rem;
-  line-height: 1.4;
-  border-bottom: 1px solid #333;
+  padding: 4px 0;
+  font-size: 0.8rem;
+  line-height: 1.2;
   color: #e0e0e0;
-}
-
-.instructions li:last-child {
-  border-bottom: none;
 }
 
 .instructions .tip {
   background-color: #2a2a2a;
-  padding: 12px;
+  padding: 8px;
   border-radius: 6px;
   border-left: 4px solid #ff1c1c;
-  margin: 15px 0 0 0;
+  margin: 8px 0 0 0;
   font-style: italic;
   color: #f0f0f0;
+  font-size: 0.8rem;
+  grid-column: 1 / -1;
 }
 
 /* Responsive tasarım */
@@ -339,6 +342,11 @@ button:disabled {
     font-size: 1.1rem;
   }
 
+  .instructions ul {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
   .instructions li {
     font-size: 0.9rem;
     padding: 6px 0;
@@ -393,6 +401,11 @@ button:disabled {
 
   .instructions h3 {
     font-size: 1.2rem;
+  }
+
+  .instructions ul {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .instructions li {

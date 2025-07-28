@@ -1,235 +1,613 @@
-/* Genel Reset ve Body */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1e1e2f, #2c2c47);
-  color: #cc4c4c;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* TestSelection Stilleri */
-.test-selection-container {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  padding: 40px 20px;
-  flex-wrap: wrap;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.test-option {
-  cursor: pointer;
-  border: 4px solid;
-  border-radius: 16px;
-  padding: 20px;
-  width: 320px;
-  display: flex;
-  align-items: center;
-  background-color: #17c967;
-  color: #222;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.test-option.left {
-  border-color: #f9b700; /* gold daha soft */
-  flex-direction: row-reverse;
-}
-
-.test-option.right {
-  border-color: #d93232; /* crimson koyulaştırıldı */
-  flex-direction: row;
-}
-
-.test-option:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  background-color: #f0f0f0;
-}
-
-.test-option.selected {
-  background-color: #eaeaea;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-}
-
-.test-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 12px;
-  margin: 0 16px;
-  object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.test-text h3 {
-  margin: 0 0 8px 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: #222;
-}
-
-.test-text p {
-  margin: 0;
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.4;
-}
-
-/* Tournament Container */
+/* Tournament Game - Modern UwuFufu Styling */
 .tournament-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
 }
 
-/* Tur Bilgisi */
-.tournament-container h2 {
-  font-size: 28px;
-  margin-bottom: 30px;
-  font-weight: 700;
-  color: #f9b700;
-  text-shadow: 0 0 8px rgba(249, 183, 0, 0.7);
-}
-
-/* Kartlar */
-.match-container {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.animal-card {
-  background-color: #fff;
-  color: #111;
-  border-radius: 20px;
-  padding: 20px;
-  width: 220px;
-  text-align: center;
-  transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  border: 4px solid transparent;
-  user-select: none;
-}
-
-.animal-card:hover {
-  transform: scale(1.07);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-}
-
-.left-card {
-  border-color: #f9b700;
-}
-
-.right-card {
-  border-color: #d93232;
-}
-
-.animal-image {
+/* Header Section */
+.tournament-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 1200px;
+  margin-bottom: 30px;
+  gap: 20px;
 }
 
-.animal-card h3 {
-  font-size: 20px;
-  margin-top: 8px;
-  font-weight: 700;
-}
-
-/* Winner Screen */
-.winner-container {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.winner-image {
-  width: 260px;
-  height: 260px;
-  border-radius: 24px;
-  object-fit: cover;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  margin-top: 30px;
-  transition: transform 0.3s ease;
-}
-
-.winner-image:hover {
-  transform: scale(1.05);
-}
-
-/* Geri Dön Butonu */
 .back-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #d93232;
+  background: #61616c;
   color: white;
+  padding: 12px 20px;
   border: none;
-  padding: 12px 18px;
-  border-radius: 10px;
+  border-radius: 25px;
   cursor: pointer;
-  font-weight: 700;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1100;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-self: start;
 }
 
 .back-button:hover {
-  background-color: #b12727;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+  background: #4a4a54;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Responsive Ayarlar */
+.tournament-header h1 {
+  text-align: center;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  justify-self: center;
+}
+
+/* Tournament Info */
+.tournament-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.round-info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.round-badge, .match-info {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.vs-indicator {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffeb3b;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Legacy class names for backward compatibility */
+.match-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.animal-card, .contestant-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.animal-card:hover, .contestant-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffeb3b;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.animal-card:active, .contestant-card:active {
+  transform: translateY(-5px) scale(0.98);
+}
+
+.animal-image, .contestant-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.animal-card:hover .animal-image, .contestant-card:hover .contestant-image {
+  border-color: #ffeb3b;
+  transform: scale(1.1);
+}
+
+.animal-card h3, .contestant-card h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.select-button {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.contestant-card:hover .select-button {
+  background: linear-gradient(135deg, #66BB6A, #4CAF50);
+  transform: scale(1.1);
+}
+
+/* Tournament Progress */
+.tournament-progress {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.progress-text {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Winner Section */
+.winner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  max-width: 600px;
+}
+
+.winner-card {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 193, 7, 0.3));
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 50px;
+  text-align: center;
+  border: 3px solid rgba(255, 215, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  animation: victoryGlow 2s infinite alternate;
+}
+
+@keyframes victoryGlow {
+  0% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
+  100% { box-shadow: 0 0 50px rgba(255, 215, 0, 0.8); }
+}
+
+.winner-crown {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+.winner-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #ffd700;
+  margin: 20px 0;
+  animation: rotateGlow 3s linear infinite;
+}
+
+@keyframes rotateGlow {
+  0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+  50% { box-shadow: 0 0 40px rgba(255, 215, 0, 1); }
+  100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+}
+
+.winner-name {
+  color: #ffd700;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 20px 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.winner-title {
+  background: linear-gradient(45deg, #ffd700, #ffeb3b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.celebration {
+  font-size: 2rem;
+  margin-top: 20px;
+  animation: celebrate 1s ease-in-out infinite;
+}
+
+@keyframes celebrate {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(10deg); }
+}
+
+/* Action Buttons */
+.victory-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.play-again-button, .home-button {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 15px 30px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.play-again-button:hover {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: #4CAF50;
+  transform: translateY(-3px);
+}
+
+.home-button:hover {
+  background: rgba(33, 150, 243, 0.3);
+  border-color: #2196F3;
+  transform: translateY(-3px);
+}
+
+/* Test Selection Styles */
+.test-selection-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.selection-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.selection-header h1 {
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.selection-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.test-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.test-option {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.test-option:hover {
+  transform: translateY(-10px) scale(1.02);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffeb3b;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.test-option:active {
+  transform: translateY(-5px) scale(0.98);
+}
+
+.test-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto 20px auto;
+  transition: all 0.3s ease;
+}
+
+.test-option:hover .test-image {
+  border-color: #ffeb3b;
+  transform: scale(1.1);
+}
+
+.test-text h3 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.test-text p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.test-count {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+/* Instructions Section */
+.instructions-section {
+  margin-top: 60px;
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+}
+
+.instructions-section h2 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.instructions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.instruction-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.instruction-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.instruction-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.instruction-card h3 {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.instruction-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
+  .tournament-container {
+    padding: 15px;
+  }
+  
+  .tournament-header {
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+  }
+  
+  .tournament-header h1 {
+    font-size: 1.8rem;
+  }
+  
   .match-container {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 400px;
   }
-
-  .animal-card {
-    width: 90vw;
+  
+  .contestant-card {
+    padding: 20px;
   }
-
-  .test-selection-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .test-option {
-    width: 90vw;
-  }
-
-  .back-button {
-    top: 10px;
-    right: 10px;
-    padding: 10px 14px;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .test-image {
+  
+  .contestant-image {
     width: 120px;
     height: 120px;
   }
-
-  .animal-image {
-    height: 140px;
+  
+  .vs-indicator {
+    font-size: 1.5rem;
+    order: -1;
   }
-
+  
+  .winner-card {
+    padding: 30px 20px;
+  }
+  
   .winner-image {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .winner-name {
+    font-size: 2rem;
+  }
+  
+  .victory-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .play-again-button, .home-button {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+  
+  .selection-header h1 {
+    font-size: 2rem;
+  }
+  
+  .test-options {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  
+  .test-option {
+    padding: 25px 20px;
+  }
+  
+  .instructions-section {
+    margin-top: 40px;
+  }
+  
+  .instructions-section h2 {
+    font-size: 2rem;
+  }
+  
+  .instructions-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tournament-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .contestant-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .contestant-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .round-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .winner-crown {
+    font-size: 3rem;
+  }
+  
+  .winner-name {
+    font-size: 1.8rem;
+  }
+  
+  .winner-title {
+    font-size: 1.4rem;
+  }
+  
+  .selection-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .test-text h3 {
+    font-size: 1.4rem;
+  }
+  
+  .instructions-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .instruction-card {
+    padding: 20px 15px;
+  }
+  
+  .instruction-icon {
+    font-size: 2.5rem;
+  }
+  
+  .instruction-card h3 {
+    font-size: 1.1rem;
   }
 }

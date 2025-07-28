@@ -1,65 +1,83 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './uwufufu.css';
 
 const testOptions = [
   {
     id: 'animals',
     title: 'Hayvan Turnuvası',
-    description: '64 farklı hayvan arasından favorini seç!',
-    image: '/assets/uwufufu/animals.png',  // public/assets/uwufufu/animals.png
+    description: '64 farklı hayvan arasından favorini seç ve şampiyonu belirle!',
+    image: '/assets/uwufufu/hayvan/hayvan1.jpg',
+    count: '64 Yarışmacı',
+    emoji: '🐾'
   },
   {
     id: 'fruits',
     title: 'Meyve Turnuvası',
-    description: 'En sevdiğin meyveyi seç!',
-    image: '/assets/uwufufu/fruits.png',   // public/assets/uwufufu/fruits.png
+    description: '32 lezzetli meyve arasında favorini seç!',
+    image: '/assets/uwufufu/meyve/meyve1.png',
+    count: '32 Yarışmacı',
+    emoji: '🍎'
   },
   {
     id: 'colors',
     title: 'Renk Turnuvası',
-    description: 'En güzel rengi seç!',
-    image: '/assets/uwufufu/colors.png',   // public/assets/uwufufu/colors.png
+    description: '64 güzel renk arasından en sevdiğini seç!',
+    image: '/assets/uwufufu/color/color1.png',
+    count: '64 Yarışmacı',
+    emoji: '🎨'
   },
 ];
 
 export default function TestSelection() {
-  const navigate = useNavigate();
-
-  function handleSelect(testId) {
-    navigate(`/tournament/${testId}`);
-  }
-
   return (
-    <div className="test-selection-container" style={{ position: 'relative' }}>
-      <button
-        className="home-button"
-        onClick={() => navigate('/')}  // Anasayfa rotası
-        style={{
-          position: 'absolute',
-          top: 20,
-          right: 20,
-          zIndex: 10,
-          padding: '8px 16px',
-          cursor: 'pointer',
-        }}
-      >
-        Anasayfa'ya Dön
-      </button>
+    <div className="test-selection-container">
+      <div className="tournament-header">
+        <Link to="/" className="back-button">← Ana Sayfa</Link>
+        <h1>🏆 UwuFufu Turnuvaları</h1>
+        <div></div>
+      </div>
 
-      <h2>Hangi Turnuvayı Oynamak İstersin?</h2>
+      <div className="selection-header">
+        <p>Hangi kategoride şampiyon olmak istiyorsun? Favori seçimini yap ve turnuvayı kazan!</p>
+      </div>
+
       <div className="test-options">
         {testOptions.map(option => (
-          <div
+          <Link
             key={option.id}
-            className="test-option-card"
-            onClick={() => handleSelect(option.id)}
+            to={`/tournament/${option.id}`}
+            className="test-option"
           >
-            <img src={option.image} alt={option.title} className="test-option-image" />
-            <h3>{option.title}</h3>
-            <p>{option.description}</p>
-          </div>
+            <img src={option.image} alt={option.title} className="test-image" />
+            <div className="test-text">
+              <h3>{option.emoji} {option.title}</h3>
+              <p>{option.description}</p>
+              <div className="test-count">{option.count}</div>
+            </div>
+          </Link>
         ))}
+      </div>
+
+      <div className="instructions-section">
+        <h2>🎯 Nasıl Oynanır?</h2>
+        <div className="instructions-grid">
+          <div className="instruction-card">
+            <div className="instruction-icon">1️⃣</div>
+            <h3>Kategori Seç</h3>
+            <p>Hayvan, meyve veya renk kategorilerinden birini seç</p>
+          </div>
+          <div className="instruction-card">
+            <div className="instruction-icon">2️⃣</div>
+            <h3>Seçim Yap</h3>
+            <p>Her turda karşına çıkan iki seçenek arasından favorini seç</p>
+          </div>
+          <div className="instruction-card">
+            <div className="instruction-icon">3️⃣</div>
+            <h3>Şampiyon Ol</h3>
+            <p>Tüm turları geçerek şampiyon seçimini belirle!</p>
+          </div>
+        </div>
       </div>
     </div>
   );
