@@ -1,0 +1,42 @@
+<!-- Simon Says SVG Icon -->
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ee5a52;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ecdc4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#44a08d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#55efc4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00b894;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="yellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd93d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f39c12;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="90" fill="#2c3e50" stroke="#34495e" stroke-width="4"/>
+  
+  <!-- Red quarter -->
+  <path d="M 100 100 L 100 20 A 80 80 0 0 1 180 100 Z" fill="url(#redGrad)" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Blue quarter -->
+  <path d="M 100 100 L 180 100 A 80 80 0 0 1 100 180 Z" fill="url(#blueGrad)" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Green quarter -->
+  <path d="M 100 100 L 100 180 A 80 80 0 0 1 20 100 Z" fill="url(#greenGrad)" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Yellow quarter -->
+  <path d="M 100 100 L 20 100 A 80 80 0 0 1 100 20 Z" fill="url(#yellowGrad)" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Center circle -->
+  <circle cx="100" cy="100" r="25" fill="#2c3e50" stroke="#fff" stroke-width="3"/>
+  
+  <!-- Text -->
+  <text x="100" y="108" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">SIMON</text>
+</svg>

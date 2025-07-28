@@ -1,75 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-  font-family: 'Roboto', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease;
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
 .tic-tac-toe-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+.tic-tac-toe-header {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tic-tac-toe-header h1 {
+  color: white;
+  font-size: 32px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+.tic-tac-toe-game {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   padding: 30px;
-  max-width: 420px;
-  width: 90%;
-  background: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  max-width: 500px;
+  width: 100%;
   text-align: center;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-.tic-tac-toe-container:hover {
-  transform: scale(1.02);
+.game-info {
+  margin-bottom: 25px;
 }
 
-h1 {
-  font-size: 2rem;
-  color: #007acc;
-  margin-bottom: 20px;
+.game-status {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 15px 0;
+  min-height: 25px;
 }
 
-p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #333;
+.game-area {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .board-row {
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
+}
+
+.board-row:last-child {
+  margin-bottom: 0;
 }
 
 .square {
-  width: 90px;
-  height: 90px;
-  background-color: #f9f9f9;
-  border: 2px solid #007acc;
-  font-size: 36px;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  border: 3px solid #007acc;
+  font-size: 42px;
   font-weight: bold;
   cursor: pointer;
-  margin: 6px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.3s ease;
-  color: #333;
+  margin: 2px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  color: #2c3e50;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
+  box-shadow: 0 4px 8px rgba(0, 122, 204, 0.2);
 }
 
 .square:hover:not(:disabled) {
-  background-color: #e6f2ff;
+  background: linear-gradient(45deg, #e3f2fd, #bbdefb);
   transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 122, 204, 0.3);
 }
 
 .square:disabled {
@@ -77,39 +114,175 @@ p {
   opacity: 0.8;
 }
 
+/* X ve O sembolleri için farklı renkler */
+.square.symbol-x {
+  color: #e74c3c !important;
+  text-shadow: 2px 2px 4px rgba(231, 76, 60, 0.3);
+}
+
+.square.symbol-o {
+  color: #3498db !important;
+  text-shadow: 2px 2px 4px rgba(52, 152, 219, 0.3);
+}
+
 .winning-square {
-  background-color: #00d676 !important;
+  background: linear-gradient(45deg, #4CAF50, #45a049) !important;
   color: white !important;
   font-weight: bolder;
-  box-shadow: 0 0 15px 4px #00d676;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.6) !important;
+  animation: winPulse 0.6s ease-in-out;
+}
+
+@keyframes winPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.game-controls {
+  margin: 30px 0;
+}
+
+.mode-selection {
+  margin: 20px 0;
+}
+
+.mode-selection h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.symbol-selection {
+  margin: 20px 0;
+}
+
+.symbol-selection h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .tic-tac-toe-button {
-  margin: 12px 8px;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #007acc, #005fa3);
+  background: linear-gradient(45deg, #007acc, #005fa3);
   color: white;
   border: none;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  user-select: none;
-  box-shadow: 0 3px 7px rgba(0, 122, 204, 0.4);
+  transition: all 0.3s ease;
+  margin: 8px;
+  box-shadow: 0 4px 15px rgba(0, 122, 204, 0.4);
 }
 
 .tic-tac-toe-button:hover:not(:disabled) {
-  background: linear-gradient(135deg, #005fa3, #003f7f);
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 95, 163, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 122, 204, 0.6);
 }
 
 .tic-tac-toe-button:disabled {
   cursor: default;
   opacity: 0.6;
   box-shadow: none;
+}
+
+.restart-button {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.restart-button:hover {
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.6);
+}
+
+.game-instructions {
+  background: rgba(0, 122, 204, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.game-instructions h3 {
+  color: #007acc;
+  margin: 0 0 15px 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.game-instructions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.game-instructions li {
+  margin: 8px 0;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+  .tic-tac-toe-container {
+    padding: 15px;
+  }
+
+  .tic-tac-toe-header h1 {
+    font-size: 24px;
+  }
+
+  .tic-tac-toe-game {
+    padding: 20px;
+  }
+
+  .square {
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+    margin: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tic-tac-toe-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .square {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+    margin: 3px;
+  }
+
+  .back-button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .tic-tac-toe-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Animasyonlar */
+.tic-tac-toe-game {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .back-link {

@@ -1,87 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
-  color: #ffffff;
-  font-family: 'Rubik', sans-serif;
+  background: #663399;
+  color: #333;
+  font-family: 'Nunito', sans-serif;
   box-sizing: border-box;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .ana-sayfa {
   min-height: 100vh;
-  padding: 60px 20px;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.ana-sayfa::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: none;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 .baslik {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Fredoka One', cursive;
   font-size: 36px;
-  color: #ffcc70;
-  text-shadow: 0 0 10px rgba(255, 204, 112, 0.6);
-  margin-bottom: 20px;
+  color: #FFD700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 15px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradientText {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .aciklama {
   font-size: 18px;
-  color: #e0e0e0;
+  font-weight: 600;
+  color: white;
   max-width: 700px;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 1;
 }
 
 .kutular {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
   width: 100%;
-  max-width: 1000px;
-  padding: 0 20px;
+  max-width: 1400px;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .oyun-karti {
-  background: #2a2a40;
-  border: 2px solid #444460;
-  border-radius: 16px;
+  background: white;
+  border: 2px solid #fff;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
   position: relative;
+  aspect-ratio: 1;
+}
+
+.oyun-karti::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1;
 }
 
 .oyun-karti:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 0 25px rgba(255, 204, 112, 0.4);
-  border-color: #ffcc70;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  border-color: #FFD700;
+}
+
+.oyun-karti:hover::before {
+  opacity: 1;
 }
 
 .oyun-gorsel {
   width: 100%;
-  height: 160px;
+  height: 75%;
   object-fit: cover;
-  background-color: #3a3a50;
-  transition: filter 0.3s;
+  background: linear-gradient(45deg, #ff9a9e, #fecfef);
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .oyun-karti:hover .oyun-gorsel {
-  filter: brightness(1.15);
+  filter: brightness(1.1);
 }
 
 .oyun-adi {
-  padding: 16px;
-  font-size: 18px;
+  padding: 4px 8px;
+  font-size: 12px;
   font-weight: 700;
   text-align: center;
-  color: #fffcf2;
-  background: rgba(0, 0, 0, 0.1);
-  border-top: 1px solid #444460;
+  color: #333;
+  background: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.2s ease;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.oyun-karti:hover .oyun-adi {
+  color: #663399;
 }
 
 /* Responsive tasarım */
@@ -95,33 +162,75 @@ body {
   }
 
   .kutular {
-    gap: 20px;
+    gap: 6px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 
   .oyun-adi {
-    font-size: 16px;
-    padding: 14px;
-  }
-
-  .oyun-gorsel {
-    height: 140px;
+    font-size: 10px;
+    padding: 3px 6px;
   }
 }
 
 @media (max-width: 480px) {
   .baslik {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .aciklama {
     font-size: 14px;
   }
 
-  .oyun-adi {
-    font-size: 14px;
+  .kutular {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 4px;
   }
 
-  .oyun-gorsel {
-    height: 120px;
+  .oyun-adi {
+    font-size: 9px;
+    padding: 2px 4px;
+  }
+
+  .oyun-karti:hover {
+    transform: scale(1.02);
+  }
+}
+
+@media (min-width: 1200px) {
+  .kutular {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  
+  .oyun-adi {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+/* Ek animasyonlar ve efektler */
+.oyun-karti {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.oyun-karti:nth-child(1) { animation-delay: 0.05s; }
+.oyun-karti:nth-child(2) { animation-delay: 0.1s; }
+.oyun-karti:nth-child(3) { animation-delay: 0.15s; }
+.oyun-karti:nth-child(4) { animation-delay: 0.2s; }
+.oyun-karti:nth-child(5) { animation-delay: 0.25s; }
+.oyun-karti:nth-child(6) { animation-delay: 0.3s; }
+.oyun-karti:nth-child(7) { animation-delay: 0.35s; }
+.oyun-karti:nth-child(8) { animation-delay: 0.4s; }
+.oyun-karti:nth-child(9) { animation-delay: 0.45s; }
+.oyun-karti:nth-child(10) { animation-delay: 0.5s; }
+.oyun-karti:nth-child(11) { animation-delay: 0.55s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

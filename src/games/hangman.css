@@ -1,56 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
 .hangman-container {
-  text-align: center;
-  color: #00ffea;
-  padding: 30px;
-  background-color: #0b0b0b;
   min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
 }
 
-.kelime {
-  font-size: 2rem;
-  letter-spacing: 10px;
-  margin: 20px 0;
-  display: inline-block;
+.hangman-header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.kazandın {
-  color: lime;
-  font-size: 1.5rem;
-}
-
-.kaybettin {
-  color: red;
-  font-size: 1.5rem;
-}
-
-.yeniden-baslat {
-  background-color: #ff00ff;
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
   color: white;
-  border: none;
-  padding: 12px 24px;
-  margin-top: 20px;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 0 10px #ff00ff;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-.yeniden-baslat:hover {
-  background-color: #e600e6;
-  box-shadow: 0 0 15px #ff33ff;
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hangman-header h1 {
+  color: white;
+  font-size: 32px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+.hangman-game {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  animation: slideIn 0.5s ease-out;
+}
+
+.game-info {
+  margin-bottom: 25px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 20px;
+  color: #667eea;
+  font-weight: 700;
+}
+
+.game-area {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 }
 
 .asmaca-container {
-  margin: 30px auto;
+  margin: 0 auto;
   width: 200px;
   height: 250px;
   position: relative;
 }
 
+.kelime-bolumu {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.kelime-label {
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.kelime {
+  font-size: 2.5rem;
+  letter-spacing: 12px;
+  color: #667eea;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(102, 126, 234, 0.3);
+  margin: 0;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+}
+
 .cizgi {
   position: absolute;
-  background-color: #00ffea;
+  background-color: #2c3e50;
+  border-radius: 2px;
 }
 
 .g-ver {
@@ -68,7 +150,7 @@
 }
 
 .g-ip {
-  width: 2px;
+  width: 3px;
   height: 30px;
   top: 0;
   left: 145px;
@@ -78,28 +160,33 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 3px solid #00ffea;
+  border: 3px solid #e74c3c;
   position: absolute;
   top: 30px;
   left: 130px;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .govde {
   width: 3px;
   height: 50px;
-  background-color: #00ffea;
+  background-color: #e74c3c;
   position: absolute;
   top: 60px;
   left: 144px;
+  border-radius: 2px;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .kol-sol,
 .kol-sag {
   width: 3px;
   height: 30px;
-  background-color: #00ffea;
+  background-color: #e74c3c;
   position: absolute;
   top: 65px;
+  border-radius: 2px;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .kol-sol {
@@ -116,9 +203,11 @@
 .bacak-sag {
   width: 3px;
   height: 35px;
-  background-color: #00ffea;
+  background-color: #e74c3c;
   position: absolute;
   top: 110px;
+  border-radius: 2px;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .bacak-sol {
@@ -131,60 +220,250 @@
   left: 160px;
 }
 
-/* Yeni klavye stili */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.game-controls {
+  margin: 30px 0;
+}
+
+.game-result {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 15px;
+  animation: resultPulse 0.6s ease-in-out;
+}
+
+.game-result.win {
+  background: rgba(76, 175, 80, 0.1);
+  border: 2px solid #4CAF50;
+}
+
+.game-result.lose {
+  background: rgba(231, 76, 60, 0.1);
+  border: 2px solid #e74c3c;
+}
+
+.game-result p {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+}
+
+.game-result.win p {
+  color: #4CAF50;
+}
+
+.game-result.lose p {
+  color: #e74c3c;
+}
+
+@keyframes resultPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 .harfler {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 12px;
+  margin-top: 30px;
 }
 
 .harf-satiri {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .harf {
-  background-color: #00ffea;
-  color: #000;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
   border: none;
-  padding: 10px;
-  font-size: 18px;
-  border-radius: 6px;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  flex-shrink: 0;
+}
+
+.harf:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
 }
 
 .harf:disabled {
-  background-color: #555;
-  color: #ccc;
   cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
 }
 
-/* Responsive düzen */
-@media (max-width: 600px) {
+.harf.correct {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.harf.wrong {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.hangman-button {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.hangman-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.restart-button {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.restart-button:hover {
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.6);
+}
+
+.game-instructions {
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.game-instructions h3 {
+  color: #667eea;
+  margin: 0 0 15px 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.game-instructions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.game-instructions li {
+  margin: 8px 0;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+  .hangman-container {
+    padding: 15px;
+  }
+
+  .hangman-header h1 {
+    font-size: 24px;
+  }
+
+  .hangman-game {
+    padding: 20px;
+  }
+
+  .kelime {
+    font-size: 2rem;
+    letter-spacing: 8px;
+    padding: 15px;
+  }
+
+  .asmaca-container {
+    width: 160px;
+    height: 200px;
+  }
+
   .harf {
     width: 32px;
     height: 32px;
-    font-size: 14px;
+    font-size: 12px;
     padding: 6px;
+  }
+
+  .harf-satiri {
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hangman-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .stats {
+    gap: 20px;
   }
 
   .kelime {
     font-size: 1.5rem;
     letter-spacing: 6px;
+    padding: 10px;
   }
 
-  .yeniden-baslat {
+  .asmaca-container {
+    width: 140px;
+    height: 180px;
+  }
+
+  .harf {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+    padding: 4px;
+  }
+
+  .harf-satiri {
+    gap: 3px;
+  }
+
+  .back-button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .hangman-button {
     padding: 10px 20px;
-    font-size: 0.9rem;
+    font-size: 14px;
   }
 }

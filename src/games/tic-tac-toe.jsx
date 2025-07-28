@@ -40,10 +40,13 @@ function Tic_tac_toe() {
 
   const renderSquare = (i) => {
     const isWinningSquare = winningLine.includes(i);
+    const symbol = squares[i];
+    const symbolClass = symbol === 'X' ? 'symbol-x' : symbol === 'O' ? 'symbol-o' : '';
+    
     return (
       <button
         key={i}
-        className={`square ${isWinningSquare ? 'winning-square' : ''}`}
+        className={`square ${isWinningSquare ? 'winning-square' : ''} ${symbolClass}`}
         onClick={() => handleClick(i)}
         disabled={!!calculateWinnerWithLine(squares)}
       >
@@ -91,15 +94,38 @@ function Tic_tac_toe() {
   if (!gameMode) {
     return (
       <div className="tic-tac-toe-container">
-        <h1>Oyun Modu Seç</h1>
-        <button className="tic-tac-toe-button" onClick={() => setGameMode('single')}>
-          Tek Oyunculu
-        </button>
-        <button className="tic-tac-toe-button" onClick={() => setGameMode('multi')}>
-          2 Oyunculu
-        </button>
-        <br /><br />
-        <Link to="/" className="back-link">Ana Sayfaya Dön</Link>
+        <div className="tic-tac-toe-header">
+          <Link to="/" className="back-button">← Ana Sayfa</Link>
+          <h1>Tic Tac Toe</h1>
+        </div>
+
+        <div className="tic-tac-toe-game">
+          <div className="game-info">
+            <div className="game-status">Oyun Modu Seçin</div>
+          </div>
+
+          <div className="mode-selection">
+            <h3>Nasıl Oynamak İstersiniz?</h3>
+            <button className="tic-tac-toe-button" onClick={() => setGameMode('single')}>
+              Botla Oyna
+            </button>
+            <button className="tic-tac-toe-button" onClick={() => setGameMode('multi')}>
+              2 Kişi Oyna
+            </button>
+          </div>
+
+          <div className="game-instructions">
+            <h3>Nasıl Oynanır?</h3>
+            <ul>
+              <li>3x3 grid üzerinde sırayla hamle yapın</li>
+              <li>Amaç: Yatay, dikey veya çapraz 3 tane dizin</li>
+              <li>Botla oynarken sembol seçebilirsiniz (X/O)</li>
+              <li>2 kişi modunda X her zaman başlar</li>
+              <li>İlk üç tane dizen oyunu kazanır</li>
+              <li>Hiç kimse kazanamazsa berabere biter</li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
@@ -107,62 +133,82 @@ function Tic_tac_toe() {
   if (gameMode === 'single' && playerSymbol === null) {
     return (
       <div className="tic-tac-toe-container">
-        <h1>Sembol Seç</h1>
-        <button className="tic-tac-toe-button" onClick={() => handleSymbolSelect('X')}>
-          X olmak istiyorum
-        </button>
-        <button className="tic-tac-toe-button" onClick={() => handleSymbolSelect('O')}>
-          O olmak istiyorum
-        </button>
-        <br /><br />
-        <button className="tic-tac-toe-button" onClick={() => setGameMode(null)}>
-          Geri
-        </button>
-        <br /><br />
-        <Link to="/" className="back-link">Ana Sayfaya Dön</Link>
+        <div className="tic-tac-toe-header">
+          <Link to="/" className="back-button">← Ana Sayfa</Link>
+          <h1>Tic Tac Toe</h1>
+        </div>
+
+        <div className="tic-tac-toe-game">
+          <div className="game-info">
+            <div className="game-status">Sembol Seçin</div>
+          </div>
+
+          <div className="symbol-selection">
+            <h3>Hangi Sembol Olmak İstersiniz?</h3>
+            <button className="tic-tac-toe-button" onClick={() => handleSymbolSelect('X')}>
+              X ile Oyna (İlk başlar)
+            </button>
+            <button className="tic-tac-toe-button" onClick={() => handleSymbolSelect('O')}>
+              O ile Oyna (İkinci başlar)
+            </button>
+          </div>
+
+          <div className="game-controls">
+            <button className="tic-tac-toe-button" onClick={() => setGameMode(null)}>
+              ← Geri
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="tic-tac-toe-container">
-      <h1>Tic Tac Toe</h1>
-      <p>{status}</p>
-
-      <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
-      </div>
-      <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
-      </div>
-      <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
+      <div className="tic-tac-toe-header">
+        <Link to="/" className="back-button">← Ana Sayfa</Link>
+        <h1>Tic Tac Toe</h1>
       </div>
 
-      <button className="tic-tac-toe-button" onClick={restartGame}>
-        Yeniden Başlat
-      </button>
+      <div className="tic-tac-toe-game">
+        <div className="game-info">
+          <div className="game-status">{status}</div>
+        </div>
 
-      <br /><br />
-      <button
-        className="tic-tac-toe-button"
-        onClick={() => {
-          setGameMode(null);
-          setPlayerSymbol(null);
-          restartGame();
-        }}
-      >
-        Geri
-      </button>
+        <div className="game-area">
+          <div className="board-row">
+            {renderSquare(0)}
+            {renderSquare(1)}
+            {renderSquare(2)}
+          </div>
+          <div className="board-row">
+            {renderSquare(3)}
+            {renderSquare(4)}
+            {renderSquare(5)}
+          </div>
+          <div className="board-row">
+            {renderSquare(6)}
+            {renderSquare(7)}
+            {renderSquare(8)}
+          </div>
+        </div>
 
-      <br /><br />
-      <Link to="/" className="back-link">Ana Sayfaya Dön</Link>
+        <div className="game-controls">
+          <button className="tic-tac-toe-button restart-button" onClick={restartGame}>
+            🔄 Yeniden Başlat
+          </button>
+          <button
+            className="tic-tac-toe-button"
+            onClick={() => {
+              setGameMode(null);
+              setPlayerSymbol(null);
+              restartGame();
+            }}
+          >
+            ← Geri
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

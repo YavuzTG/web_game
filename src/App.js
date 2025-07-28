@@ -14,6 +14,10 @@ import './games/dino-game.css';
 import './games/car-game.css';
 import './games/minesweeper.css';
 import './games/color-mixer.css';
+import './games/simon-says.css';
+import './games/whack-a-mole.css';
+import './games/snake-game.css';
+import './games/piano-tiles.css';
 
 import Tic_tac_toe from './games/tic-tac-toe';
 import Hangman from './games/hangman';
@@ -28,12 +32,16 @@ import DinoGame from './games/dino-game';
 import CarGame from './games/car-game';
 import Minesweeper from './games/minesweeper';
 import ColorMixer from './games/color-mixer';
+import SimonSays from './games/simon-says';
+import WhackAMole from './games/whack-a-mole';
+import SnakeGame from './games/snake-game';
+import PianoTiles from './games/piano-tiles';
 
 function AnaSayfa() {
   return (
     <div className="ana-sayfa">
-      <h1 className="baslik">NEON OYUN PORTALI</h1>
-      <p className="aciklama">Bir oyun seç ve oynamaya başla!</p>
+      <h1 className="baslik">🎮 KRAL OYUN 🎮</h1>
+      <p className="aciklama">En eğlenceli oyunlar burada! Hemen bir oyun seç ve macerana başla!</p>
 
       <div className="kutular">
         <Link to="/tic-tac-toe" className="oyun-karti">
@@ -96,6 +104,26 @@ function AnaSayfa() {
           <div className="oyun-adi">Renk Karıştır</div>
         </Link>
 
+        <Link to="/simon-says" className="oyun-karti">
+          <img src="/assets/anasayfa/simon-says.png" alt="Simon Says" className="oyun-gorsel" />
+          <div className="oyun-adi">Simon Says</div>
+        </Link>
+
+        <Link to="/whack-a-mole" className="oyun-karti">
+          <img src="/assets/anasayfa/whack-a-mole.png" alt="Whack-a-Mole" className="oyun-gorsel" />
+          <div className="oyun-adi">Köstebek Vurma</div>
+        </Link>
+
+        <Link to="/snake-game" className="oyun-karti">
+          <img src="/assets/anasayfa/snake-game.svg" alt="Snake" className="oyun-gorsel" />
+          <div className="oyun-adi">Snake</div>
+        </Link>
+
+        <Link to="/piano-tiles" className="oyun-karti">
+          <img src="/assets/anasayfa/piano-tiles.svg" alt="Piano Tiles" className="oyun-gorsel" />
+          <div className="oyun-adi">Piano Tiles</div>
+        </Link>
+
       </div>
     </div>
   );
@@ -119,6 +147,10 @@ function App() {
         <Route path="/car-game" element={<CarGame />} />
         <Route path="/minesweeper" element={<Minesweeper />} />
         <Route path="/color-mixer" element={<ColorMixer />} />
+        <Route path="/simon-says" element={<SimonSays />} />
+        <Route path="/whack-a-mole" element={<WhackAMole />} />
+        <Route path="/snake-game" element={<SnakeGame />} />
+        <Route path="/piano-tiles" element={<PianoTiles />} />
         
 
       </Routes>
