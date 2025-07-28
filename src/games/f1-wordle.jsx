@@ -221,34 +221,23 @@ const F1Wordle = ({ onNewGame }) => {
         {history.map((h, idx) => {
           const pilotData = pilots.find((p) => p.name === h.name);
           return (
-            <div
-              key={idx}
-              className="guess-row"
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                marginBottom: "6px",
-                padding: "6px 0",
-                borderBottom: "1px solid #444",
-                color: "white",
-              }}
-            >
-              <div style={{ minWidth: "120px" }}>{h.name}</div>
-              <div style={{ minWidth: "80px" }}>
-                {pilotData?.country || "Bilinmiyor"}{" "}
+            <div key={idx} className="guess-row">
+              <div>Pilot: {h.name}</div>
+              <div>
+                Ülke: {pilotData?.country || "Bilinmiyor"}{" "}
                 {h.country === "correct" ? "✅" : "❌"}
               </div>
-              <div style={{ minWidth: "120px" }}>
-                {pilotData?.team} {h.team === "correct" ? "✅" : "❌"}
+              <div>
+                Takım: {pilotData?.team} {h.team === "correct" ? "✅" : "❌"}
               </div>
-              <div style={{ minWidth: "60px" }}>
-                {h.points.status} {h.points.value}
+              <div>
+                Puan: {h.points.status} {h.points.value}
               </div>
-              <div style={{ minWidth: "90px" }}>
-                {h.titles.status} {h.titles.value}
+              <div>
+                Şampiyonluk: {h.titles.status} {h.titles.value}
               </div>
-              <div style={{ minWidth: "90px" }}>
-                {h.birthYear.status} {h.birthYear.value}
+              <div>
+                Doğum Yılı: {h.birthYear.status} {h.birthYear.value}
               </div>
             </div>
           );
