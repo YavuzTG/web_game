@@ -1,17 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./dino-game.css";
 
 export default function DinoGame() {
   const canvasRef = useRef(null);
-  const navigate = useNavigate();
-
-  const [dinoY, setDinoY] = useState(120);
+  const [dinoY, setDinoY] = useState(100);
   const [jumping, setJumping] = useState(false);
-  const [cactusX, setCactusX] = useState(600);
+  const [cactusX, setCactusX] = useState(500);
   const [gameOver, setGameOver] = useState(false);
   const [cactusSpeed, setCactusSpeed] = useState(6);
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(
+    Number(localStorage.getItem('bestScoreDino')) || 0
+  );
+  const [showInstructions, setShowInstructions] = useState(false);
 
   const gravity = 2;
   const jumpSpeed = 25;
@@ -42,64 +44,123 @@ export default function DinoGame() {
 
    function drawDino(y) {
   const x = 50;
-  ctx.fillStyle = "#222";
-
-  // Gövde
+  
+  // Gövde - Modern gradient
+  const gradient = ctx.createLinearGradient(x, y, x + 40, y + 40);
+  gradient.addColorStop(0, "#4CAF50");
+  gradient.addColorStop(1, "#2E7D32");
+  ctx.fillStyle = gradient;
   ctx.fillRect(x + 10, y + 10, 20, 20);
 
-  // Kafa
+  // Kafa - Parlak yeşil
+  ctx.fillStyle = "#66BB6A";
   ctx.fillRect(x + 25, y, 15, 15);
 
-  // Göz
+  // Göz - Daha büyük ve parlak
   ctx.fillStyle = "white";
-  ctx.fillRect(x + 35, y + 3, 3, 3);
+  ctx.fillRect(x + 33, y + 3, 5, 5);
+  ctx.fillStyle = "#333";
+  ctx.fillRect(x + 35, y + 4, 2, 2);
 
-  // Ayaklar
-  ctx.fillStyle = "#222";
+  // Ayaklar - Gradient
+  ctx.fillStyle = gradient;
   ctx.fillRect(x + 10, y + 30, 6, 10);
   ctx.fillRect(x + 24, y + 30, 6, 10);
 
-  // Kuyruk
+  // Kuyruk - Yumuşak curves
+  ctx.fillStyle = "#4CAF50";
   ctx.beginPath();
   ctx.moveTo(x + 10, y + 20);
-  ctx.lineTo(x, y + 25);
+  ctx.quadraticCurveTo(x - 5, y + 22, x, y + 25);
   ctx.lineTo(x + 10, y + 25);
   ctx.fill();
 }
 
 
     function drawCactus(x) {
-      ctx.fillStyle = "green";
-      ctx.fillRect(x, 130, 10, 30);
-      ctx.fillRect(x + 10, 140, 10, 20);
-      ctx.fillRect(x + 5, 120, 10, 10);
+      // Ana gövde - Gradient
+      const gradient = ctx.createLinearGradient(x, 110, x + 20, 140);
+      gradient.addColorStop(0, "#8BC34A");
+      gradient.addColorStop(1, "#4CAF50");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(x, 110, 10, 30);
+      
+      // Dal - Sağ
+      ctx.fillRect(x + 10, 120, 10, 20);
+      
+      // Üst kısım
+      ctx.fillStyle = "#66BB6A";
+      ctx.fillRect(x + 5, 100, 10, 10);
+      
+      // Dikenler efekti
+      ctx.fillStyle = "#2E7D32";
+      for (let i = 0; i < 5; i++) {
+        ctx.fillRect(x + 2, 105 + (i * 7), 1, 3);
+        ctx.fillRect(x + 7, 105 + (i * 7), 1, 3);
+        ctx.fillRect(x + 13, 125 + (i * 3), 1, 2);
+      }
     }
 
     function drawScore(currentScore) {
-      ctx.fillStyle = "#555";
-      ctx.font = "18px Arial";
-      ctx.textAlign = "right";
-      ctx.fillText(`Skor: ${currentScore}`, canvas.width - 20, 30);
+      // Skor background
+      ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+      ctx.fillRect(canvas.width - 100, 10, 90, 25);
+      
+      // Skor border
+      ctx.strokeStyle = "#4CAF50";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(canvas.width - 100, 10, 90, 25);
+      
+      // Skor text
+      ctx.fillStyle = "#2E7D32";
+      ctx.font = "bold 14px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText(`Skor: ${currentScore}`, canvas.width - 55, 25);
     }
 
     function drawGameOver(finalScore) {
-      ctx.fillStyle = "rgba(0,0,0,0.7)";
+      // Overlay background
+      ctx.fillStyle = "rgba(0,0,0,0.8)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "white";
-      ctx.font = "40px Arial";
+      
+      // Game Over card
+      ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
+      ctx.fillRect(canvas.width/2 - 150, canvas.height/2 - 60, 300, 120);
+      
+      // Card border
+      ctx.strokeStyle = "#4CAF50";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(canvas.width/2 - 150, canvas.height/2 - 60, 300, 120);
+      
+      // Title
+      ctx.fillStyle = "#D32F2F";
+      ctx.font = "bold 28px Arial";
       ctx.textAlign = "center";
-      ctx.fillText("Oyun Bitti!", canvas.width / 2, canvas.height / 2 - 30);
-      ctx.font = "24px Arial";
-      ctx.fillText(`Skorun: ${finalScore}`, canvas.width / 2, canvas.height / 2 + 10);
-      ctx.font = "18px Arial";
-      ctx.fillText("Tekrar başlatmak için ekrana dokun veya boşluk tuşuna bas", canvas.width / 2, canvas.height / 2 + 50);
+      ctx.fillText("🦕 Oyun Bitti!", canvas.width / 2, canvas.height / 2 - 25);
+      
+      // Score
+      ctx.fillStyle = "#2E7D32";
+      ctx.font = "bold 18px Arial";
+      ctx.fillText(`Skorun: ${finalScore}`, canvas.width / 2, canvas.height / 2);
+      
+      // Best Score
+      if (finalScore > bestScore) {
+        ctx.fillStyle = "#FF9800";
+        ctx.font = "bold 14px Arial";
+        ctx.fillText("🏆 Yeni Rekor!", canvas.width / 2, canvas.height / 2 + 20);
+      }
+      
+      // Restart text
+      ctx.fillStyle = "#666";
+      ctx.font = "14px Arial";
+      ctx.fillText("Tekrar başlatmak için dokunun", canvas.width / 2, canvas.height / 2 + 40);
     }
 
     function update() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const dinoRect = { x: 50, y: dinoY, width: 40, height: 40 };
-      const cactusRect = { x: cactusX, y: 120, width: 30, height: 50 };
+      const cactusRect = { x: cactusX, y: 100, width: 30, height: 50 };
 
       if (collisionDetected(dinoRect, cactusRect)) {
         setGameOver(true);
@@ -109,16 +170,23 @@ export default function DinoGame() {
 
       let newCactusX = cactusX - cactusSpeed;
       if (newCactusX < -30) {
-        newCactusX = 600;
-        setScore((prev) => prev + 1);
+        newCactusX = 500;
+        setScore((prev) => {
+          const newScore = prev + 1;
+          if (newScore > bestScore) {
+            setBestScore(newScore);
+            localStorage.setItem('bestScoreDino', newScore.toString());
+          }
+          return newScore;
+        });
       }
       setCactusX(newCactusX);
 
       if (jumping) {
         velocityRef.current -= gravity;
         let newY = dinoY - velocityRef.current;
-        if (newY >= 120) {
-          newY = 120;
+        if (newY >= 100) {
+          newY = 100;
           setJumping(false);
           velocityRef.current = 0;
         }
@@ -144,6 +212,7 @@ export default function DinoGame() {
   useEffect(() => {
     function handleKeyDown(e) {
       if (e.code === "Space") {
+        e.preventDefault(); // Sayfanın aşağı kaymasını engelle
         handleJump();
       }
     }
@@ -155,8 +224,8 @@ export default function DinoGame() {
   function handleJump() {
     if (gameOver) {
       setGameOver(false);
-      setCactusX(600);
-      setDinoY(120);
+      setCactusX(500);
+      setDinoY(100);
       setJumping(false);
       velocityRef.current = 0;
       setCactusSpeed(6);
@@ -167,24 +236,92 @@ export default function DinoGame() {
     }
   }
 
-  function goHome() {
-    navigate("/");
-  }
-
   return (
-    <div className="dino-game">
-      <canvas
-        ref={canvasRef}
-        width={600}
-        height={180}
-        className="game-canvas"
-        onClick={handleJump}
-        onTouchStart={handleJump}
-      />
-      {!gameOver && <p>Boşluk tuşuna bas veya dokunarak zıpla</p>}
-      <button className="btn-home" onClick={goHome}>
-        Ana Sayfaya Dön
-      </button>
+    <div className="dino-game-container">
+      <div className="game-header">
+        <Link to="/" className="back-button">← Geri Dön</Link>
+        <h1>🦕 Dino Game</h1>
+        <button 
+          className="help-button"
+          onClick={() => setShowInstructions(!showInstructions)}
+        >
+          ❓
+        </button>
+      </div>
+
+      <div className="score-container">
+        <div className="score-card">
+          <div className="score-label">Skor</div>
+          <div className="score-value">{score}</div>
+        </div>
+        <div className="score-card best">
+          <div className="score-label">En İyi</div>
+          <div className="score-value">{bestScore}</div>
+        </div>
+      </div>
+
+      <div className="game-area">
+        <canvas
+          ref={canvasRef}
+          width={500}
+          height={150}
+          className="game-canvas"
+          onClick={handleJump}
+          onTouchStart={handleJump}
+        />
+      </div>
+
+      <div className="game-controls">
+        <div className="control-hint">
+          <p>🎮 Boşluk tuşu veya dokunarak zıpla!</p>
+        </div>
+      </div>
+
+      {showInstructions && (
+        <div className="instructions-overlay">
+          <div className="instructions-card">
+            <div className="instructions-header">
+              <h2>🦕 Nasıl Oynanır?</h2>
+              <button 
+                className="close-btn"
+                onClick={() => setShowInstructions(false)}
+              >
+                ✕
+              </button>
+            </div>
+            <div className="instructions-content">
+              <div className="instruction-item">
+                <div className="instruction-icon">🎯</div>
+                <div className="instruction-text">
+                  <h3>Amaç</h3>
+                  <p>Dinozor ile kaktüslere çarpmadan kaç!</p>
+                </div>
+              </div>
+              <div className="instruction-item">
+                <div className="instruction-icon">⌨️</div>
+                <div className="instruction-text">
+                  <h3>Kontroller</h3>
+                  <p>Boşluk tuşu ile zıpla. Mobilde ekrana dokun.</p>
+                </div>
+              </div>
+              <div className="instruction-item">
+                <div className="instruction-icon">🌵</div>
+                <div className="instruction-text">
+                  <h3>Oyun Kuralı</h3>
+                  <p>Kaktüslere çarpmadan kaç. Oyun gittikçe hızlanır!</p>
+                </div>
+              </div>
+              <div className="instruction-item">
+                <div className="instruction-icon">🏆</div>
+                <div className="instruction-text">
+                  <h3>Skor</h3>
+                  <p>Her geçtiğin kaktüs için 1 puan kazanırsın!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

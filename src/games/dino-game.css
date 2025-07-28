@@ -1,53 +1,358 @@
-.dino-game {
+/* Dino Game - Modern Styling */
+.dino-game-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Header Section */
+.game-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.back-button {
+  background: #61616c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-self: start;
+}
+
+.back-button:hover {
+  background: #4a4a54;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.game-header h1 {
   text-align: center;
-  margin-top: 30px;
-  user-select: none;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+  color: white;
+  font-size: 2rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  margin: 0;
+  justify-self: center;
+}
+
+.help-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  justify-self: end;
+}
+
+.help-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Score Section */
+.score-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.score-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  min-width: 80px;
+}
+
+.score-card.best {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+.score-label {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.8;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.score-value {
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Game Area */
+.game-area {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 60vw;
+  max-height: 50vh;
 }
 
 .game-canvas {
-  border: 2px solid #222;
-  background-color: #f0f0f0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
   display: block;
-  margin: 0 auto;
-  border-radius: 8px;
-
-  /* Mobil uyum için */
-  width: 90%;
+  width: 100%;
   max-width: 600px;
   height: auto;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
 }
 
-p {
-  font-size: 16px;
-  margin: 10px 0;
+/* Controls Section */
+.game-controls {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.btn-home {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #555;
-  border: none;
-  border-radius: 5px;
-  color: white;
+.control-hint {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.control-hint p {
+  margin: 0;
+  font-size: 13px;
   font-weight: 600;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Instructions Overlay */
+.instructions-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.instructions-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.instructions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(103, 126, 234, 0.2);
+}
+
+.instructions-header h2 {
+  color: #667eea;
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.close-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.btn-home:hover {
-  background-color: #333;
+.close-btn:hover {
+  background: #ff3742;
+  transform: scale(1.1);
 }
 
-/* Mobil ekranlar için daha küçük yazılar */
-@media (max-width: 500px) {
-  .btn-home {
-    width: 90%;
+.instructions-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.instruction-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(103, 126, 234, 0.1);
+  border-radius: 15px;
+  border: 1px solid rgba(103, 126, 234, 0.2);
+}
+
+.instruction-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.instruction-text h3 {
+  color: #667eea;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.instruction-text p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .dino-game-container {
+    padding: 8px;
+  }
+  
+  .game-header {
+    margin-bottom: 12px;
+    gap: 8px;
+  }
+  
+  .game-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .score-container {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  
+  .score-card {
+    padding: 10px 15px;
+    min-width: 70px;
+  }
+  
+  .score-value {
+    font-size: 18px;
+  }
+  
+  .game-area {
+    padding: 10px;
+    margin-bottom: 12px;
+    max-width: 95vw;
+    max-height: 60vh;
+  }
+  
+  .instructions-card {
+    padding: 20px;
+    max-width: 95%;
+  }
+  
+  .instructions-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .instruction-item {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .instruction-icon {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dino-game-container {
+    padding: 5px;
+  }
+  
+  .game-header {
+    margin-bottom: 10px;
+    gap: 8px;
+  }
+  
+  .game-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .score-container {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .score-card {
+    padding: 8px 12px;
+    min-width: 60px;
+  }
+  
+  .score-value {
     font-size: 16px;
   }
-
-  p {
-    font-size: 14px;
+  
+  .game-area {
+    padding: 8px;
+    margin-bottom: 10px;
+    max-width: 98vw;
+    max-height: 50vh;
+  }
+  
+  .control-hint {
+    padding: 4px 8px;
+  }
+  
+  .control-hint p {
+    font-size: 11px;
   }
 }
