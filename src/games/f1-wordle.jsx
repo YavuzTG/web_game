@@ -6,6 +6,7 @@ import pilots from "./f1-wordle-data";
 const F1Wordle = ({ onNewGame }) => {
   const navigate = useNavigate();
   const usedPilots = useRef(new Set());
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const [answer, setAnswer] = useState(null);
   const [guess, setGuess] = useState("");
@@ -13,6 +14,15 @@ const F1Wordle = ({ onNewGame }) => {
   const [history, setHistory] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [allUsed, setAllUsed] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const selectNewPilot = () => {
     const availablePilots = pilots.filter(
@@ -195,7 +205,7 @@ const F1Wordle = ({ onNewGame }) => {
       </div>
 
       {/* Başlık */}
-      {history.length > 0 && (
+      {history.length > 0 && !isMobile && (
         <div
           className="header-info"
           style={{
