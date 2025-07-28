@@ -303,12 +303,7 @@ button:disabled {
   }
 
   .header-info {
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .header-info div {
-    padding: 5px;
+    display: none;
   }
 
   .guess-row {
@@ -402,6 +397,10 @@ button:disabled {
 
   .instructions li {
     font-size: 0.9rem;
+  }
+
+  .header-info {
+    display: none;
   }
 
   .guess-row {
