@@ -151,21 +151,38 @@ const F1Wordle = ({ onNewGame }) => {
 
   return (
     <div className="f1-wordle-container">
+      {/* Ana Sayfa butonu sağ üstte */}
+      <div className="top-right-button">
+        <button onClick={handleBackToHome}>
+          ← Ana Sayfa
+        </button>
+      </div>
+
       <h1 className="title">🏁 F1 Wordle Tahmin Oyunu</h1>
       <p className="subtitle">Pilot adını yaz ya da seç ve tahmin et!</p>
 
       {/* Tahmin girişi */}
       <div className="input-section">
-        <input
-          type="text"
-          value={guess}
-          onChange={handleChange}
-          placeholder="Pilot adı yaz..."
-          disabled={gameOver}
-        />
-        <button onClick={handleGuess} disabled={gameOver}>
-          Tahmin Et
-        </button>
+        <div className="game-controls">
+          <input
+            type="text"
+            value={guess}
+            onChange={handleChange}
+            placeholder="Pilot adı yazın..."
+            disabled={gameOver}
+          />
+          <button onClick={handleGuess} disabled={gameOver || !guess.trim()}>
+            Tahmin Et
+          </button>
+          <button
+            onClick={handleNewGame}
+            style={{
+              backgroundColor: "#ff1c1c",
+            }}
+          >
+            Yeni Oyun
+          </button>
+        </div>
         {filteredSuggestions.length > 0 && (
           <ul className="suggestions">
             {filteredSuggestions.map((name, index) => (
@@ -240,39 +257,21 @@ const F1Wordle = ({ onNewGame }) => {
 
       {gameOver && <div className="win-message">🎉 Doğru pilot: {answer.name}</div>}
 
-      {/* Butonlar */}
-      <div
-        style={{
-          marginTop: "20px",
-          display: "flex",
-          justifyContent: "center",
-          gap: "10px",
-        }}
-      >
-        <button
-          onClick={handleBackToHome}
-          style={{
-            backgroundColor: "#555",
-            color: "#fff",
-            borderRadius: "6px",
-            padding: "8px 14px",
-            cursor: "pointer",
-          }}
-        >
-          Ana Sayfa
-        </button>
-        <button
-          onClick={handleNewGame}
-          style={{
-            backgroundColor: "#ff1c1c",
-            color: "#fff",
-            borderRadius: "6px",
-            padding: "8px 14px",
-            cursor: "pointer",
-          }}
-        >
-          Yeni Oyun
-        </button>
+      {/* Nasıl Oynanır */}
+      <div className="instructions">
+        <h3>🏁 Nasıl Oynanır</h3>
+        <ul>
+          <li>🎯 <strong>Amaç:</strong> Gizli F1 pilotunu tahmin edin</li>
+          <li>✍️ <strong>Tahmin:</strong> Pilot adını yazın veya önerilerden seçin</li>
+          <li>✅ <strong>Doğru:</strong> Yeşil tik doğru eşleşmeyi gösterir</li>
+          <li>❌ <strong>Yanlış:</strong> Kırmızı X yanlış eşleşmeyi gösterir</li>
+          <li>🔼 <strong>Yukarı Ok:</strong> Gerçek değer daha büyük</li>
+          <li>🔽 <strong>Aşağı Ok:</strong> Gerçek değer daha küçük</li>
+          <li>🏆 <strong>Kazanma:</strong> Doğru pilotu bulana kadar devam edin</li>
+        </ul>
+        <p className="tip">
+          💡 <strong>İpucu:</strong> Pilot özelliklerini karşılaştırarak doğru cevaba ulaşın!
+        </p>
       </div>
     </div>
   );

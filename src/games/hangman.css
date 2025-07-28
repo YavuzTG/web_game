@@ -2,7 +2,7 @@
 
 .hangman-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #1f1f2f, #1f1f2f);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
 }
 
 .back-button {
-  background: rgba(255, 255, 255, 0.2);
+  background: #61616c;
   color: white;
   text-decoration: none;
   padding: 12px 20px;

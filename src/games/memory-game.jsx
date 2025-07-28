@@ -42,13 +42,43 @@ function MemoryGame() {
   const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
   const [lockBoard, setLockBoard] = useState(false);
+  const [moves, setMoves] = useState(0);
+  const [matchedPairs, setMatchedPairs] = useState(0);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+  const [gameTime, setGameTime] = useState(0);
 
   useEffect(() => {
     setCards(shuffleArray(cardImages));
   }, []);
 
+  // Zamanlayıcı
+  useEffect(() => {
+    let interval = null;
+    if (gameStarted && matchedPairs < cardImages.length) {
+      interval = setInterval(() => {
+        setGameTime(Date.now() - startTime);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [gameStarted, matchedPairs, startTime]);
+
+  const formatTime = (time) => {
+    const seconds = Math.floor(time / 1000) % 60;
+    const minutes = Math.floor(time / 60000);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
   const handleCardClick = (index) => {
     if (lockBoard || cards[index].isFlipped || cards[index].isMatched) return;
+
+    // Oyunu başlat
+    if (!gameStarted) {
+      setGameStarted(true);
+      setStartTime(Date.now());
+    }
 
     const newCards = [...cards];
     newCards[index].isFlipped = true;
@@ -59,6 +89,7 @@ function MemoryGame() {
     } else if (!secondCard) {
       setSecondCard({ ...newCards[index], index });
       setLockBoard(true);
+      setMoves(moves + 1);
     }
   };
 
@@ -70,6 +101,7 @@ function MemoryGame() {
         if (match) {
           newCards[firstCard.index].isMatched = true;
           newCards[secondCard.index].isMatched = true;
+          setMatchedPairs(matchedPairs + 1);
         } else {
           newCards[firstCard.index].isFlipped = false;
           newCards[secondCard.index].isFlipped = false;
@@ -80,38 +112,88 @@ function MemoryGame() {
         setLockBoard(false);
       }, 1000);
     }
-  }, [secondCard]);
+  }, [secondCard, matchedPairs]);
 
   const restartGame = () => {
     setCards(shuffleArray(cardImages));
     setFirstCard(null);
     setSecondCard(null);
     setLockBoard(false);
+    setMoves(0);
+    setMatchedPairs(0);
+    setGameStarted(false);
+    setStartTime(null);
+    setGameTime(0);
   };
+
+  const isGameWon = matchedPairs === cardImages.length;
 
   return (
     <div className="memory-container">
-      <h1>Kart Eşleme Oyunu</h1>
-      <div className="memory-grid">
-        {cards.map((card, index) => (
-          <div
-            key={card.id}
-            className={`memory-card ${card.isFlipped || card.isMatched ? 'flipped' : ''}`}
-            onClick={() => handleCardClick(index)}
-          >
-            <div className="front"></div>
-            <div className="back">
-              <img src={card.img} alt="card" />
-            </div>
-          </div>
-        ))}
+      <div className="memory-header">
+        <Link to="/" className="back-button">← Ana Sayfa</Link>
+        <h1>Kart Eşleme Oyunu</h1>
       </div>
 
-      <button className="memory-button" onClick={restartGame}>Yeniden Başlat</button>
+      <div className="memory-game">
+        <div className="game-info">
+          <div className="stats">
+            <div className="stat-item">
+              <span className="stat-label">Hamle:</span>
+              <span className="stat-value">{moves}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">Eşleşen:</span>
+              <span className="stat-value">{matchedPairs} / {cardImages.length}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">Süre:</span>
+              <span className="stat-value">{formatTime(gameTime)}</span>
+            </div>
+          </div>
+        </div>
 
-      {/* ✅ Ana Sayfa bağlantısı */}
-      <br /><br />
-      <Link to="/" className="back-link">Ana Sayfaya Dön</Link>
+        <div className="game-area">
+          {isGameWon && (
+            <div className="game-result win">
+              <p>🎉 Tebrikler! Oyunu {moves} hamlede {formatTime(gameTime)} sürede tamamladınız!</p>
+            </div>
+          )}
+
+          <div className="memory-grid">
+            {cards.map((card, index) => (
+              <div
+                key={card.id}
+                className={`memory-card ${card.isFlipped || card.isMatched ? 'flipped' : ''} ${card.isMatched ? 'matched' : ''}`}
+                onClick={() => handleCardClick(index)}
+              >
+                <div className="card-front"></div>
+                <div className="card-back">
+                  <img src={card.img} alt="card" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="game-controls">
+          <button className="memory-button restart-button" onClick={restartGame}>
+            {isGameWon ? 'Yeni Oyun' : 'Yeniden Başlat'}
+          </button>
+        </div>
+
+        <div className="game-instructions">
+          <h3>Nasıl Oynanır?</h3>
+          <ul>
+            <li>Kartlara tıklayarak çevirin ve eşleşen çiftleri bulun</li>
+            <li>Aynı anda sadece 2 kart çevrilebilir</li>
+            <li>Eşleşen kartlar açık kalır, eşleşmeyenler kapanır</li>
+            <li>Tüm çiftleri en az hamlede bulmaya çalışın</li>
+            <li>Zamanınız ölçülür, hızlı olmaya çalışın!</li>
+            <li>Galatasaray temalı kartlarla hafıza gücünüzü test edin</li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
