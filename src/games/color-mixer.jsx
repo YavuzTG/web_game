@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './color-mixer.css';
 
 const getRandomColor = () => ({
@@ -22,7 +22,6 @@ export default function ColorMix() {
   const [targetColor, setTargetColor] = useState(getRandomColor());
   const [playerColor, setPlayerColor] = useState({ r: 0, g: 0, b: 0 });
   const [difference, setDifference] = useState(null);
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,8 +40,11 @@ export default function ColorMix() {
   };
 
   return (
-    <div className="color-mix-container">
-      <h2>🎨 Renk Karıştırma Oyunu</h2>
+    <div className="color-mixer-container">
+      <div className="game-header">
+        <Link to="/" className="back-button">← Geri Dön</Link>
+        <h1 style={{ marginLeft: '-50px' }}>🎨 Renk Karıştırma</h1>
+      </div>
 
       <div className="color-boxes">
         <div>
@@ -62,20 +64,19 @@ export default function ColorMix() {
       </div>
 
       <div className="sliders">
-        <label>R: <input type="range" name="r" min="0" max="255" value={playerColor.r} onChange={handleChange} /></label>
-        <label>G: <input type="range" name="g" min="0" max="255" value={playerColor.g} onChange={handleChange} /></label>
-        <label>B: <input type="range" name="b" min="0" max="255" value={playerColor.b} onChange={handleChange} /></label>
+        <label>🔴 Kırmızı: <input type="range" name="r" min="0" max="255" value={playerColor.r} onChange={handleChange} /></label>
+        <label>🟢 Yeşil: <input type="range" name="g" min="0" max="255" value={playerColor.g} onChange={handleChange} /></label>
+        <label>🔵 Mavi: <input type="range" name="b" min="0" max="255" value={playerColor.b} onChange={handleChange} /></label>
       </div>
 
-      <div className="buttons">
-        <button onClick={handleMix}>🎛 Karıştır</button>
-        <button onClick={handleNewColor}>🔄 Yeni Hedef</button>
-        <button onClick={() => navigate('/')}>🏠 Ana Sayfa</button>
+      <div className="game-controls" style={{ marginLeft: '570px' }}>
+        <button onClick={handleMix} className="restart-btn">🎛 Karıştır</button>
+        <button onClick={handleNewColor} className="restart-btn">🔄 Yeni Hedef</button>
       </div>
 
       {difference !== null && (
         <p className="result">
-          🎯 Fark: <strong>{Math.round(difference)}</strong> / 441 <br />
+          � Fark: <strong>{Math.round(difference)}</strong> / 441 <br />
           (0 = mükemmel eşleşme)
         </p>
       )}

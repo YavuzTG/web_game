@@ -1,79 +1,317 @@
-.minesweeper {
-  display: grid;
-  gap: 4px;
-  max-width: fit-content;
-  margin: 20px auto;
-}
-.cell {
-  width: 40px;
-  height: 40px;
-  background-color: #444;
-  cursor: pointer;
-  border: 2px solid #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-}
-.cell.revealed {
-  background-color: #888;
-}
-.cell.mine {
-  background-color: red;
-}
-.minesweeper-wrapper {
-  text-align: center;
+/* Minesweeper Game - Modern CSS */
+
+/* Container */
+.minesweeper-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
+/* Header */
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.back-button {
+  background: #61616c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #4a4a54;
+  transform: translateY(-2px);
+}
+
+.game-header h1 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  margin: 0;
+}
+
+.help-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.help-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Game Area */
+.game-area {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Grid - inline style'dan grid-template-columns gelecek */
 .minesweeper {
   display: grid;
-  gap: 4px;
-  margin: 20px auto;
+  gap: 3px;
+  margin: 0 auto;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Hücreler */
 .cell {
-  width: 40px;
-  height: 40px;
-  background-color: #444;
-  cursor: pointer;
-  border: 2px solid #222;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(145deg, #555, #444);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 20px;
+  font-weight: 900;
   color: white;
-  font-weight: bold;
-  font-size: 18px;
-}
-.cell.revealed {
-  background-color: #888;
-}
-.cell.mine {
-  background-color: red;
-}
-.buttons {
-  margin-top: 20px;
-}
-.buttons button {
-  padding: 10px 16px;
-  margin: 0 8px;
-  font-size: 16px;
   cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  background-color: #2a2a5e;
-  color: #fff;
-  transition: background 0.2s;
-}
-.buttons button:hover {
-  background-color: #444488;
-}
-.cell.flagged {
-  background-color: #2a8f2a;
-  color: yellow;
-  font-weight: bold;
-  font-size: 22px;
+  transition: all 0.2s ease;
   user-select: none;
+}
+
+.cell:hover:not(.revealed) {
+  background: linear-gradient(145deg, #666, #555);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cell.revealed {
+  background: linear-gradient(145deg, #e0e0e0, #d0d0d0);
+  color: #333;
+  border-color: rgba(0, 0, 0, 0.2);
+  cursor: default;
+}
+
+.cell.mine {
+  background: linear-gradient(145deg, #ff4757, #ff3742) !important;
+  color: white;
+  animation: explode 0.6s ease-out;
+}
+
+.cell.flagged {
+  background: linear-gradient(145deg, #ffa502, #ff6348);
+  color: white;
+}
+
+/* Sayı Renkleri */
+.cell.revealed[data-count="1"] { color: #1e90ff; }
+.cell.revealed[data-count="2"] { color: #32cd32; }
+.cell.revealed[data-count="3"] { color: #ff4500; }
+.cell.revealed[data-count="4"] { color: #8b008b; }
+.cell.revealed[data-count="5"] { color: #8b0000; }
+.cell.revealed[data-count="6"] { color: #2e8b57; }
+.cell.revealed[data-count="7"] { color: #000000; }
+.cell.revealed[data-count="8"] { color: #808080; }
+
+/* Kontroller */
+.game-controls {
+  text-align: center;
+}
+
+.control-hint {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 15px 25px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.control-hint p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.restart-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Animasyonlar */
+@keyframes explode {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Instructions Overlay */
+.instructions-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.instructions-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.instructions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(103, 126, 234, 0.2);
+}
+
+.instructions-header h2 {
+  color: #667eea;
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.close-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #ff3742;
+  transform: scale(1.1);
+}
+
+.instructions-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.instruction-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(103, 126, 234, 0.1);
+  border-radius: 15px;
+}
+
+.instruction-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.instruction-text h3 {
+  color: #667eea;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.instruction-text p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .minesweeper-container {
+    padding: 15px;
+  }
+  
+  .game-header h1 {
+    font-size: 2rem;
+  }
+  
+  .cell {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .game-area {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .cell {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .game-area {
+    padding: 15px;
+  }
+  
+  .control-hint p {
+    font-size: 14px;
+  }
 }
