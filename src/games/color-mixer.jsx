@@ -43,7 +43,7 @@ export default function ColorMix() {
     <div className="color-mixer-container">
       <div className="game-header">
         <Link to="/" className="back-button">← Geri Dön</Link>
-        <h1 style={{ marginLeft: '-50px' }}>🎨 Renk Karıştırma</h1>
+        <h1>🎨 Renk Karıştırma</h1>
       </div>
 
       <div className="color-boxes">
@@ -69,7 +69,7 @@ export default function ColorMix() {
         <label>🔵 Mavi: <input type="range" name="b" min="0" max="255" value={playerColor.b} onChange={handleChange} /></label>
       </div>
 
-      <div className="game-controls" style={{ marginLeft: '570px' }}>
+      <div className="game-controls">
         <button onClick={handleMix} className="restart-btn">🎛 Karıştır</button>
         <button onClick={handleNewColor} className="restart-btn">🔄 Yeni Hedef</button>
       </div>
